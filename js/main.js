@@ -1079,14 +1079,14 @@ function scrollProgress(element) {
     let value = parseFloat((top / height) * 100).toFixed(0);
     path.setAttribute("stroke-dashoffset", -(length - scroll));
     progress.setAttribute("aria-valuenow", `${value}%`);
-    document.querySelector(
-      ".scroll_progress_wrapper>span"
-    ).innerHTML = `${value}%`;
+    // document.querySelector(
+    //   ".scroll_progress_wrapper>span"
+    // ).innerHTML = `${value}%`;
   };
 
-  // window.addEventListener("scroll", scrollable);
+  window.addEventListener("scroll", scrollable);
 }
-// scrollProgress(".scroll-progress-circle");
+scrollProgress(".scroll-progress-circle");
 
 let type_writter_w = document.querySelector(".type_writter_w");
 
