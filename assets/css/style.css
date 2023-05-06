@@ -3917,7 +3917,7 @@ label {
   width: 8.3rem;
   height: 6rem;
   object-fit: contain;
-  object-position: bottom;
+  object-position: center;
 }
 
 @media screen and (min-width: 1200px) {
@@ -7394,7 +7394,7 @@ ul:not(.cs-mega_wrapper)
   display: -ms-grid;
   display: grid;
   grid-gap: 36px 40px;
-  -ms-grid-columns: (1fr)[2];
+  /* -ms-grid-columns: (1fr)[2]; */
       grid-template-columns: repeat(2, 1fr);
 }
 
@@ -7562,7 +7562,7 @@ ul:not(.cs-mega_wrapper)
 @media screen and (max-width: 767px) {
   .cs-funfacts {
     grid-gap: 15px 15px;
-    -ms-grid-columns: (1fr)[1];
+    /* -ms-grid-columns: (1fr)[1]; */
         grid-template-columns: repeat(1, 1fr);
   }
 }
@@ -7570,7 +7570,7 @@ ul:not(.cs-mega_wrapper)
 @media screen and (max-width: 575px) {
   .cs-funfacts {
     grid-gap: 15px 15px;
-    -ms-grid-columns: (1fr)[1];
+    /* -ms-grid-columns: (1fr)[1]; */
         grid-template-columns: repeat(1, 1fr);
   }
   .cs-funfact_wrap,
@@ -8147,3 +8147,7 @@ ul:not(.cs-mega_wrapper)
   }
 }
 /*# sourceMappingURL=style.css.map */
+
+.cs-site_header.cs-style1 .cs-main_header_in{
+  height: 110px !important;
+}
