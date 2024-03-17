@@ -261,7 +261,7 @@ textarea {
   margin-top: -60px;
 }
 
-.cs-preloader_in::before {
+/* .cs-preloader_in::before {
   content: "";
   height: 8px;
   width: 8px;
@@ -272,7 +272,7 @@ textarea {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   background-color: #3762d8;
-}
+} */
 
 @-webkit-keyframes spin {
   0% {
