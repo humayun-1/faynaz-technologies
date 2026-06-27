@@ -1,0 +1,11 @@
+---
+import Layout from '../components/Layout.astro';
+import content from '../content/pages/photography-agency.html?raw';
+
+const title = "Photography Agency - Faynaz Technologies";
+const description = 'Faynaz Technologies crafts web development, AI, machine learning, and design solutions that help businesses grow.';
+---
+
+<Layout title={title} description={description} particles={false}>
+  <Fragment set:html={content} />
+</Layout>

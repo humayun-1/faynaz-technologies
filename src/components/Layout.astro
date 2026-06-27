@@ -1,0 +1,72 @@
+---
+import Footer from './Footer.astro';
+import Header from './Header.astro';
+import Scripts from './Scripts.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  particles?: boolean;
+}
+
+const {
+  title = site.title,
+  description = site.description,
+  particles = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Faynaz Technologies" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:image" content="/assets/img/logo.svg" />
+    <link rel="icon" href="/assets/img/favicon.png" />
+    <title>{title}</title>
+    <link rel="preload" href="/assets/css/plugins/bootstrap.min.css" as="style" />
+    <link rel="stylesheet" href="/assets/css/plugins/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/plugins/lightgallery.min.css" />
+    <link rel="stylesheet" href="/assets/css/plugins/slick.css" />
+    <link rel="stylesheet" href="/assets/css/plugins/animate.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body>
+    <div class="cs-preloader cs-center">
+      <div class="cs-preloader_in">
+        <img src="/assets/img/favicon.png" alt="Faynaz Technologies" />
+      </div>
+    </div>
+    <Header />
+    <slot />
+    <Footer />
+    <span class="cs-scrollup">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 10L1.7625 11.7625L8.75 4.7875V20H11.25V4.7875L18.225 11.775L20 10L10 0L0 10Z" fill="currentColor"></path>
+      </svg>
+    </span>
+    <div class="cs-video_popup">
+      <div class="cs-video_popup_overlay"></div>
+      <div class="cs-video_popup_content">
+        <div class="cs-video_popup_layer"></div>
+        <div class="cs-video_popup_container">
+          <div class="cs-video_popup_align">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="about:blank" loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="cs-video_popup_close"></div>
+        </div>
+      </div>
+    </div>
+    <Scripts particles={particles} />
+  </body>
+</html>
