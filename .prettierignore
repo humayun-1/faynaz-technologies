@@ -1,0 +1,6 @@
+dist
+node_modules
+public/assets/css/plugins
+public/assets/js/plugins
+public/assets/fonts
+public/assets/img

@@ -1,0 +1,11 @@
+---
+import Layout from '../components/Layout.astro';
+import content from '../content/pages/index.html?raw';
+
+const title = "Faynaz Tech - Web, AI, & design solutions that empower businesses to grow.";
+const description = 'Faynaz Technologies crafts web development, AI, machine learning, and design solutions that help businesses grow.';
+---
+
+<Layout title={title} description={description} particles={true}>
+  <Fragment set:html={content} />
+</Layout>
