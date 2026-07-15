@@ -1,0 +1,20 @@
+---
+import SiteClean from "../components/SiteClean.astro";
+
+const title = "Page not found (404) | Faynaz Technologies";
+const description = "That page doesn't exist. Explore our services, insights, or get in touch.";
+---
+<SiteClean title={title} description={description} noindex={true}>
+  <section class="fx-section fx-section--plain" style="padding:clamp(72px,12vw,160px) 0">
+    <div class="fx-wrap" style="max-width:640px;text-align:center">
+      <p class="fx-eyebrow" style="justify-content:center">Error 404</p>
+      <h1 style="font-size:clamp(2.4rem,6vw,3.6rem);font-weight:680;letter-spacing:-.04em;line-height:1.02">This page took a wrong turn.</h1>
+      <p class="fx-lead" style="margin:20px auto 32px;max-width:46ch">The page you're after doesn't exist or has moved. Here's the way back.</p>
+      <div class="fx-cta-actions" style="justify-content:center">
+        <a href="/" class="fx-btn fx-btn--primary"><span>Back to home</span> <span class="fx-arrow" aria-hidden="true">→</span></a>
+        <a href="/service" class="fx-btn fx-btn--ghost"><span>Services</span></a>
+        <a href="/insights" class="fx-btn fx-btn--ghost"><span>Insights</span></a>
+      </div>
+    </div>
+  </section>
+</SiteClean>

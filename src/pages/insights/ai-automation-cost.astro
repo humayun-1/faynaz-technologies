@@ -1,5 +1,6 @@
 ---
 import SiteClean from "../../components/SiteClean.astro";
+import RelatedGuides from "../../components/fx/RelatedGuides.astro";
 import { site } from "../../data/site";
 
 const title = "How Much Does AI Automation Cost in 2026? | Faynaz Technologies";
@@ -87,4 +88,6 @@ const faqSchema = { "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": 
       </div>
     </div>
   </article>
+
+  <RelatedGuides current="/insights/ai-automation-cost" />
 </SiteClean>

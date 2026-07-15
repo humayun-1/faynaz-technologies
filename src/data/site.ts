@@ -20,7 +20,16 @@ export const site = {
     region: "Dubai",
     country: "AE",
     countryName: "United Arab Emirates",
+    postalCode: "",
   },
+  // Local-SEO + GEO entity signals
+  geo: { lat: 25.0693, lng: 55.139 },
+  mapUrl: "https://www.google.com/maps/search/?api=1&query=Jumeirah+Lake+Towers+Dubai",
+  priceRange: "$$$",
+  foundingYear: 2021,
+  openingHours: [
+    { days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"], opens: "09:00", closes: "18:00" },
+  ],
   // Markets we target (GEO/SEO entity signal)
   areaServed: [
     "United Kingdom", "Australia", "Netherlands", "Sweden", "Denmark",

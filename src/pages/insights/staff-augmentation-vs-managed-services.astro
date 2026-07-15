@@ -1,5 +1,6 @@
 ---
 import SiteClean from "../../components/SiteClean.astro";
+import RelatedGuides from "../../components/fx/RelatedGuides.astro";
 import { site } from "../../data/site";
 
 const title = "Staff Augmentation vs Managed Services: Which Should You Choose? | Faynaz Technologies";
@@ -86,4 +87,6 @@ const faqSchema = { "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": 
       </div>
     </div>
   </article>
+
+  <RelatedGuides current="/insights/staff-augmentation-vs-managed-services" />
 </SiteClean>

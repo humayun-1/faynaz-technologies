@@ -1,0 +1,30 @@
+---
+import { relatedGuides } from "../../data/insights";
+
+interface Props {
+  current: string;
+  limit?: number;
+}
+const { current, limit = 3 } = Astro.props;
+const items = relatedGuides(current, limit);
+---
+{items.length > 0 && (
+  <section class="fx-section fx-section--surface" aria-label="Related guides">
+    <div class="fx-wrap">
+      <div class="fx-head fx-reveal" style="margin-bottom:32px">
+        <p class="fx-eyebrow">Keep reading</p>
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem)">Related guides</h2>
+      </div>
+      <div class="fx-cards fx-reveal">
+        {items.map((g) => (
+          <a class="fx-card" href={g.href}>
+            <p class="fx-eyebrow" style="margin-bottom:12px">{g.tag}</p>
+            <h3>{g.heading}</h3>
+            <p>{g.blurb}</p>
+            <span class="more">Read the guide <span aria-hidden="true">→</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

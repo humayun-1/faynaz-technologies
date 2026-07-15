@@ -19,4 +19,16 @@
 ## Key pages
 - Services: https://faynaztech.com/service
 - Hire engineers: https://faynaztech.com/hire-developer
+- About: https://faynaztech.com/about
 - Contact: https://faynaztech.com/contact
+
+## Guides (Insights)
+- How much does it cost to hire a developer in 2026?: https://faynaztech.com/insights/cost-to-hire-a-developer
+- How much does AI automation cost in 2026?: https://faynaztech.com/insights/ai-automation-cost
+- Offshore vs nearshore software development: https://faynaztech.com/insights/offshore-vs-nearshore-development
+- Staff augmentation vs managed services: https://faynaztech.com/insights/staff-augmentation-vs-managed-services
+- What is DevOps?: https://faynaztech.com/insights/what-is-devops
+
+## Feeds
+- RSS: https://faynaztech.com/rss.xml
+- Sitemap: https://faynaztech.com/sitemap-index.xml

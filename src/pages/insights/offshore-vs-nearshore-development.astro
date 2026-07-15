@@ -1,5 +1,6 @@
 ---
 import SiteClean from "../../components/SiteClean.astro";
+import RelatedGuides from "../../components/fx/RelatedGuides.astro";
 import { site } from "../../data/site";
 
 const title = "Offshore vs Nearshore Software Development: Which Is Better? | Faynaz Technologies";
@@ -85,4 +86,6 @@ const faqSchema = { "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": 
       </div>
     </div>
   </article>
+
+  <RelatedGuides current="/insights/offshore-vs-nearshore-development" />
 </SiteClean>

@@ -7,6 +7,7 @@ interface Props {
   /** Path or absolute URL for the canonical link. Defaults to current page. */
   canonical?: string;
   ogImage?: string;
+  ogType?: "website" | "article";
   /** Comma-free list rendered into keywords meta (light signal only). */
   keywords?: string[];
   noindex?: boolean;
@@ -19,6 +20,7 @@ const {
   description = site.description,
   canonical,
   ogImage = site.ogImage,
+  ogType = "website",
   keywords = [],
   noindex = false,
   schema = [],
@@ -28,17 +30,25 @@ const canonicalUrl = new URL(canonical ?? Astro.url.pathname, site.url).href;
 const ogImageUrl = new URL(ogImage, site.url).href;
 
 // Global entity graph — this is what Google + AI answer engines read to understand "who is Faynaz".
+// Typed as Organization + ProfessionalService so it carries both corporate and local-business signals.
 const organization = {
-  "@type": "Organization",
+  "@type": ["Organization", "ProfessionalService"],
   "@id": `${site.url}/#organization`,
   name: site.name,
   legalName: site.legalName,
   url: site.url,
-  logo: new URL(site.logo, site.url).href,
-  image: ogImageUrl,
+  logo: {
+    "@type": "ImageObject",
+    "@id": `${site.url}/#logo`,
+    url: new URL(site.logo, site.url).href,
+    caption: site.name,
+  },
+  image: { "@id": `${site.url}/#logo` },
   email: site.email,
   telephone: site.phoneUae,
   description: site.description,
+  foundingDate: String(site.foundingYear),
+  priceRange: site.priceRange,
   address: {
     "@type": "PostalAddress",
     streetAddress: site.address.street,
@@ -46,7 +56,26 @@ const organization = {
     addressRegion: site.address.region,
     addressCountry: site.address.country,
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: site.geo.lat,
+    longitude: site.geo.lng,
+  },
+  hasMap: site.mapUrl,
+  openingHoursSpecification: site.openingHours.map((o) => ({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: o.days,
+    opens: o.opens,
+    closes: o.closes,
+  })),
   areaServed: site.areaServed,
+  knowsAbout: [
+    "Full-stack development",
+    "DevOps",
+    "Cloud engineering",
+    "AI automation",
+    "Software staff augmentation",
+  ],
   sameAs: site.sameAs,
 };
 
@@ -55,6 +84,7 @@ const website = {
   "@id": `${site.url}/#website`,
   url: site.url,
   name: site.name,
+  description: site.description,
   publisher: { "@id": `${site.url}/#organization` },
   inLanguage: ["en", "ar"],
 };
@@ -69,22 +99,29 @@ const graph = {
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalUrl} />
 {keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
-{noindex && <meta name="robots" content="noindex, nofollow" />}
+<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large"} />
 <meta name="author" content={site.name} />
 
 <!-- Open Graph -->
 <meta property="og:site_name" content={site.name} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:image" content={ogImageUrl} />
+<meta property="og:locale" content="en_AE" />
+<meta property="og:locale:alternate" content="ar_AE" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImageUrl} />
+
+<!-- Discovery + performance -->
+<link rel="alternate" type="application/rss+xml" title={`${site.name} — Insights`} href="/rss.xml" />
+<link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+<link rel="preload" as="style" href="/assets/css/fx.css" />
 
 <!-- Structured data (SEO rich results + GEO entity signal) -->
 <script type="application/ld+json" set:html={JSON.stringify(graph)} is:inline />

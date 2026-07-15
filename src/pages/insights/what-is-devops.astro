@@ -1,5 +1,6 @@
 ---
 import SiteClean from "../../components/SiteClean.astro";
+import RelatedGuides from "../../components/fx/RelatedGuides.astro";
 import { site } from "../../data/site";
 
 const title = "What Is DevOps? A Clear 2026 Explanation | Faynaz Technologies";
@@ -78,4 +79,6 @@ const faqSchema = { "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": 
       </div>
     </div>
   </article>
+
+  <RelatedGuides current="/insights/what-is-devops" />
 </SiteClean>
