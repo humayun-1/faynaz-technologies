@@ -6,6 +6,11 @@ export default defineConfig({
   output: "static",
   integrations: [
     sitemap({
+      // Keep legacy, not-yet-migrated pages out of the sitemap (they are also noindex).
+      filter: (page) =>
+        !/\/(blog|blog-details|faq|hire-developer|portfolio|portfolio-details|service-details|services\/quality-assurance)\/?$/.test(
+          page,
+        ),
       serialize(item) {
         item.lastmod = new Date().toISOString();
         const url = item.url;

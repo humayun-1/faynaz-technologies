@@ -70,15 +70,18 @@ const faqSchema = {
           <div class="fx-hero-meta"><span class="dot" aria-hidden="true"></span><span data-i18n="hero_meta">Booking projects for Q3 — typical start within two weeks.</span></div>
         </div>
         <div class="fx-hero-visual fx-reveal">
-          <div class="fx-console" role="img" aria-label="Release console showing uptime, deployments and throughput.">
-            <div class="fx-console-bar"><div class="lights" aria-hidden="true"><span></span><span></span><span></span></div><div class="tag">release · v2.4.0</div></div>
-            <div class="fx-kpis">
-              <div class="fx-kpi"><div class="n">99.98<span class="up">▲</span></div><div class="l" data-i18n="k_uptime">Uptime this quarter</div></div>
-              <div class="fx-kpi"><div class="n">128</div><div class="l" data-i18n="k_deploys">Deploys shipped</div></div>
+          <div class="fx-console" role="img" aria-label="Illustration of an automated delivery pipeline: build, test, and deploy.">
+            <div class="fx-console-bar"><div class="lights" aria-hidden="true"><span></span><span></span><span></span></div><div class="tag">pipeline · production</div></div>
+            <div class="fx-caps">
+              <span class="fx-chip">CI/CD</span><span class="fx-chip">Kubernetes</span><span class="fx-chip">Monitoring</span>
             </div>
-            <div class="fx-chart"><div class="chd"><span>throughput</span><span>+31%</span></div>
-              <div class="fx-bars" aria-hidden="true"><i style="height:38%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:66%"></i><i style="height:58%"></i><i class="hi" style="height:92%"></i><i style="height:74%"></i></div>
+            <div class="fx-steps">
+              <div class="fx-step done"><span class="ck" aria-hidden="true">✓</span><span data-i18n="hp_build">Build</span></div>
+              <div class="fx-step done"><span class="ck" aria-hidden="true">✓</span><span data-i18n="hp_test">Automated tests</span></div>
+              <div class="fx-step done"><span class="ck" aria-hidden="true">✓</span><span data-i18n="hp_scan">Security scan</span></div>
+              <div class="fx-step active"><span class="ck" aria-hidden="true">→</span><span data-i18n="hp_deploy">Deploy</span></div>
             </div>
+            <div class="fx-console-note" data-i18n="hp_note">How we ship — automated, tested, and reliable.</div>
           </div>
         </div>
       </div>
@@ -91,11 +94,13 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- TRUST -->
+  <!-- STACK -->
   <section class="fx-trust">
     <div class="fx-wrap">
-      <p class="fx-trust-label" data-i18n="trust_label">Teams in fintech, healthcare, and SaaS trust us to ship</p>
-      <div class="fx-logos" aria-hidden="true"><span>Northwind</span><span>Ledgerly</span><span>Corewave</span><span>Meridian</span><span>Vantgo</span></div>
+      <p class="fx-trust-label" data-i18n="trust_label">The modern stack we build and ship on</p>
+      <div class="fx-logos">
+        <span>React</span><span>Next.js</span><span>Node.js</span><span>Python</span><span>AWS</span><span>Kubernetes</span><span>Docker</span><span>Terraform</span><span>PostgreSQL</span><span>OpenAI</span>
+      </div>
     </div>
   </section>
 
@@ -253,25 +258,26 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- WORK -->
-  <section class="fx-section fx-section--surface" id="work">
+  <!-- OUTCOMES -->
+  <section class="fx-section fx-section--surface" id="outcomes">
     <div class="fx-wrap">
-      <div class="fx-head fx-reveal"><p class="fx-eyebrow" data-i18n="work_eyebrow">Selected work</p><h2 data-i18n="work_h2">Measured by outcomes, not screenshots.</h2></div>
-      <div class="fx-work-grid">
-        <article class="fx-work fx-reveal"><div class="sector">Fintech</div><div class="stat">-42%</div><h3 data-i18n="work1_h">Rebuilt an operations console that cut internal processing time.</h3><p data-i18n="work1_p">Consolidated four manual tools into one workflow, removing daily handoffs.</p><div class="foot" data-i18n="work1_f">Operations platform · 8-week build</div></article>
-        <article class="fx-work fx-reveal"><div class="sector">SaaS</div><div class="stat">+31%</div><h3 data-i18n="work2_h">A conversion-focused rebuild that lifted qualified demos.</h3><p data-i18n="work2_p">New messaging, hierarchy, and page speed turned visitors into booked calls.</p><div class="foot" data-i18n="work2_f">Marketing site · 5-week build</div></article>
-        <article class="fx-work fx-reveal"><div class="sector">Healthcare</div><div class="stat">~0</div><h3 data-i18n="work3_h">Automated a workflow down to near-zero manual handoffs.</h3><p data-i18n="work3_p">Structured forms and rules routing replaced spreadsheets and re-entry.</p><div class="foot" data-i18n="work3_f">Workflow automation · 7-week build</div></article>
+      <div class="fx-head fx-reveal"><p class="fx-eyebrow" data-i18n="out_eyebrow">What we deliver</p><h2 data-i18n="out_h2">The outcomes we engineer for.</h2></div>
+      <div class="fx-cards">
+        <div class="fx-card fx-reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m13 3-8 10h6l-1 8 8-10h-6l1-8Z"/></svg></div><h3 data-i18n="out1_h">Ship faster, break less</h3><p data-i18n="out1_p">Automated CI/CD, cloud, and monitoring so your team releases often and recovers quickly when something goes wrong.</p></div>
+        <div class="fx-card fx-reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.5 7.6 11 15.5M16.5 7.6 13 15.5M8 6h8"/></svg></div><h3 data-i18n="out2_h">Cut the manual work</h3><p data-i18n="out2_p">Workflow automation and practical AI that remove repetitive tasks and free your team for higher-value work.</p></div>
+        <div class="fx-card fx-reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5"/></svg></div><h3 data-i18n="out3_h">Build products that scale</h3><p data-i18n="out3_p">Web apps and platforms architected to stay fast and maintainable as your users and features grow.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="fx-section" id="voices">
+  <!-- COMMITMENTS -->
+  <section class="fx-section" id="commitments">
     <div class="fx-wrap">
-      <div class="fx-head fx-reveal"><p class="fx-eyebrow" data-i18n="voi_eyebrow">In their words</p><h2 data-i18n="voi_h2">What founders say after we ship.</h2></div>
-      <div class="fx-quotes">
-        <figure class="fx-quote fx-reveal"><blockquote data-i18n="q1">“They scoped it honestly, hit the dates, and the system does exactly what we needed. Rare to work with a team this direct.”</blockquote><figcaption class="who"><span class="av" aria-hidden="true">SR</span><span><span class="nm">Sara Rahman</span><br><span class="rl">COO, Ledgerly</span></span></figcaption></figure>
-        <figure class="fx-quote fx-reveal"><blockquote data-i18n="q2">“We got a partner who understood the business. Demos are up and the product finally feels like us.”</blockquote><figcaption class="who"><span class="av" aria-hidden="true">DK</span><span><span class="nm">Daniel Kwon</span><br><span class="rl">Founder &amp; CEO, Corewave</span></span></figcaption></figure>
+      <div class="fx-head fx-reveal"><p class="fx-eyebrow" data-i18n="com_eyebrow">Our commitments</p><h2 data-i18n="com_h2">What you can count on — in writing.</h2></div>
+      <div class="fx-cards">
+        <div class="fx-card fx-reveal"><h3 data-i18n="com1_h">Senior engineers only</h3><p data-i18n="com1_p">The people on your first call are the ones who deliver. No junior bench, no bait-and-switch.</p></div>
+        <div class="fx-card fx-reveal"><h3 data-i18n="com2_h">Fixed scope and price</h3><p data-i18n="com2_p">Agreed after a short discovery, so there are no surprise invoices mid-project.</p></div>
+        <div class="fx-card fx-reveal"><h3 data-i18n="com3_h">You own everything</h3><p data-i18n="com3_p">Code, cloud accounts, and IP are yours from day one. We build on your accounts — no lock-in.</p></div>
       </div>
     </div>
   </section>
