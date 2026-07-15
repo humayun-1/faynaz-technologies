@@ -14,6 +14,9 @@ export const site = {
   email: "contact@faynaztech.com",
   phoneUae: "+971 568718307",
   phonePakistan: "+92 3222333170",
+  // Booking + form endpoints
+  booking: "https://calendly.com/contact-faynaztech",
+  formEndpoint: "https://formspree.io/f/xkodobbg",
   address: {
     street: "Cluster X, Jumeirah Bay X1 Tower, Jumeirah Lake Towers",
     city: "Dubai",
