@@ -70,7 +70,7 @@
     foot_addr: "أبراج بحيرات جميرا — دبي، الإمارات",
     foot_email_l: "البريد:", foot_phone_l: "الهاتف:",
     foot_company: "الشركة", fl_about: "من نحن", fl_models: "طرق العمل", fl_work: "أعمالنا", fl_faq: "الأسئلة", fl_contact: "تواصل",
-    foot_services: "الخدمات", fs_full: "تطوير متكامل", fs_devops: "DevOps وسحابة", fs_ai: "أتمتة ذكاء", fs_hire: "وظّف مهندسين", fs_qa: "الجودة والإصدار",
+    foot_services: "الخدمات", fs_full: "تطوير متكامل", fs_devops: "DevOps وسحابة", fs_ai: "أتمتة ذكاء", fs_hire: "وظّف مهندسين", fs_qa: "الجودة والإصدار", fs_solutions: "حلول حسب القطاع",
     foot_legal: "القانوني والموارد", fr_terms: "شروط الخدمة", fr_privacy: "سياسة الخصوصية", fr_est: "مُقدّر المشروع",
     foot_recognition: "تقديرات", foot_copy: "© 2026 فايناز تكنولوجيز. جميع الحقوق محفوظة.", lang_label: "English"
   };

@@ -1,0 +1,73 @@
+---
+import SiteClean from "../../components/SiteClean.astro";
+import { site } from "../../data/site";
+import { solutions } from "../../data/solutions";
+
+const title = "Solutions by Industry — DevOps, AI & Cloud | Faynaz Technologies";
+const description =
+  "Industry solutions from a Dubai studio — DevOps for fintech, AI automation for SaaS and logistics, cloud migration for e-commerce, and software for healthcare.";
+
+const breadcrumb = {
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+    { "@type": "ListItem", position: 2, name: "Solutions", item: `${site.url}/solutions` },
+  ],
+};
+const collection = {
+  "@type": "CollectionPage",
+  "@id": `${site.url}/solutions#webpage`,
+  url: `${site.url}/solutions`,
+  name: title,
+  isPartOf: { "@id": `${site.url}/#website` },
+  hasPart: solutions.map((s) => ({ "@type": "Service", name: s.h1, url: `${site.url}/solutions/${s.slug}` })),
+};
+---
+
+<SiteClean title={title} description={description} canonical="/solutions" schema={[breadcrumb, collection]}>
+  <section class="fx-subhero">
+    <div class="fx-wrap">
+      <nav class="fx-crumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><span>Solutions</span></nav>
+      <p class="fx-eyebrow">Solutions by industry</p>
+      <h1>Engineering built for your industry.</h1>
+      <p class="fx-lead">DevOps, AI automation, cloud, and software development — shaped to the realities of fintech, SaaS, e-commerce, logistics, and healthcare.</p>
+      <div class="fx-subhero-actions">
+        <a href="/contact" class="fx-btn fx-btn--primary"><span>Let's have a call</span> <span class="fx-arrow" aria-hidden="true">→</span></a>
+        <a href="/service" class="fx-btn fx-btn--ghost"><span>All services</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="fx-section">
+    <div class="fx-wrap">
+      <div class="fx-head fx-reveal">
+        <p class="fx-eyebrow">Solutions</p>
+        <h2>Pick your industry and challenge.</h2>
+      </div>
+      <div class="fx-cards fx-reveal">
+        {solutions.map((s) => (
+          <a class="fx-card" href={`/solutions/${s.slug}`}>
+            <p class="fx-eyebrow" style="margin-bottom:12px">{s.category} · {s.industry}</p>
+            <h3>{s.h1}</h3>
+            <p>{s.description}</p>
+            <span class="more">View solution <span aria-hidden="true">→</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="fx-section fx-section--surface">
+    <div class="fx-wrap">
+      <div class="fx-cta fx-reveal">
+        <p class="fx-eyebrow">Don't see your industry?</p>
+        <h2>Tell us your challenge.</h2>
+        <p>We work across regulated, high-scale, and fast-moving industries. Book a call and we'll tell you honestly how we'd approach it.</p>
+        <div class="fx-cta-actions">
+          <a href="/contact" class="fx-btn fx-btn--light"><span>Let's have a call</span> <span class="fx-arrow" aria-hidden="true">→</span></a>
+          <a href="/hire" class="fx-btn fx-btn--outline-light"><span>Hire engineers</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</SiteClean>
