@@ -333,6 +333,8 @@ body.fx-loading { overflow: hidden; }
 [dir="rtl"] .fx-subhero h1 { letter-spacing: 0; }
 .fx-subhero .fx-lead { margin-top: 20px; font-size: 1.18rem; max-width: 60ch; }
 .fx-subhero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+/* rhythm: the hero already has a bottom border — avoid a doubled seam on the next section */
+.fx-subhero + .fx-section { border-top: none; }
 
 .fx-crumb { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: .82rem; color: var(--muted); margin-bottom: 22px; }
 .fx-crumb a:hover { color: var(--accent); }

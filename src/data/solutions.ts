@@ -48,7 +48,7 @@ export const solutions: Solution[] = [
       { q: "We're a small team — do we really need DevOps?", a: "Even small teams benefit: automated deploys and monitoring free your engineers to build product instead of firefighting, and they prevent expensive scaling problems later." },
       { q: "Can you set us up and then hand it over?", a: "Yes. We can deliver the setup as a fixed-scope engagement with documentation, or stay on as a dedicated retainer — your choice." },
     ],
-    description: "DevOps for SaaS startups from a Dubai studio — CI/CD, scalable cloud, monitoring, and cost control so small teams ship confidently. Dedicated team or managed service.",
+    description: "DevOps for SaaS startups from a Dubai studio — CI/CD, scalable cloud, monitoring, and cost control so small teams ship confidently.",
   },
   {
     slug: "ai-automation-for-saas",
