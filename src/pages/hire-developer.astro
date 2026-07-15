@@ -1,0 +1,12 @@
+---
+import Layout from '../components/Layout.astro';
+import content from '../content/pages/hire-developer.html?raw';
+
+const title = 'Hire Developer - Faynaz Technologies';
+const description =
+  'Hire dedicated developers, product teams, and QA support from Faynaz Technologies for web, AI, automation, and design work.';
+---
+
+<Layout title={title} description={description} particles={true}>
+  <Fragment set:html={content} />
+</Layout>

@@ -1,0 +1,90 @@
+---
+import { site } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Path or absolute URL for the canonical link. Defaults to current page. */
+  canonical?: string;
+  ogImage?: string;
+  /** Comma-free list rendered into keywords meta (light signal only). */
+  keywords?: string[];
+  noindex?: boolean;
+  /** Extra JSON-LD graph nodes for this page (e.g. FAQPage, Service, BreadcrumbList). */
+  schema?: Record<string, unknown>[];
+}
+
+const {
+  title = site.title,
+  description = site.description,
+  canonical,
+  ogImage = site.ogImage,
+  keywords = [],
+  noindex = false,
+  schema = [],
+} = Astro.props;
+
+const canonicalUrl = new URL(canonical ?? Astro.url.pathname, site.url).href;
+const ogImageUrl = new URL(ogImage, site.url).href;
+
+// Global entity graph — this is what Google + AI answer engines read to understand "who is Faynaz".
+const organization = {
+  "@type": "Organization",
+  "@id": `${site.url}/#organization`,
+  name: site.name,
+  legalName: site.legalName,
+  url: site.url,
+  logo: new URL(site.logo, site.url).href,
+  image: ogImageUrl,
+  email: site.email,
+  telephone: site.phoneUae,
+  description: site.description,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    addressCountry: site.address.country,
+  },
+  areaServed: site.areaServed,
+  sameAs: site.sameAs,
+};
+
+const website = {
+  "@type": "WebSite",
+  "@id": `${site.url}/#website`,
+  url: site.url,
+  name: site.name,
+  publisher: { "@id": `${site.url}/#organization` },
+  inLanguage: ["en", "ar"],
+};
+
+const graph = {
+  "@context": "https://schema.org",
+  "@graph": [organization, website, ...schema],
+};
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+{keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+<meta name="author" content={site.name} />
+
+<!-- Open Graph -->
+<meta property="og:site_name" content={site.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={ogImageUrl} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<!-- Structured data (SEO rich results + GEO entity signal) -->
+<script type="application/ld+json" set:html={JSON.stringify(graph)} is:inline />

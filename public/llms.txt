@@ -1,0 +1,22 @@
+# Faynaz Technologies
+
+> Dubai-based software studio delivering full-stack development, DevOps & cloud, and AI automation. Engagements run as a dedicated team (staff augmentation) or a managed service (fixed-scope delivery). Serving startups, SMEs, and enterprises across the UK, Australia, Netherlands, the Nordics, Singapore, the US, Canada, and the UAE.
+
+## What we do
+- Full-stack software development: web apps, SaaS platforms, MVPs, APIs.
+- DevOps & cloud: CI/CD, Kubernetes, cloud migration, infrastructure as code, reliability.
+- AI automation: workflow automation, AI agents, LLM integration, business process automation.
+
+## How to work with us
+- Dedicated Team: hire senior engineers (DevOps, AI/ML, full-stack) who plug into your team on a retainer.
+- Managed Service: we scope, build, and deliver a defined outcome at a fixed price.
+
+## Contact
+- Book a discovery call: https://faynaztech.com/contact
+- Email: contact@faynaztech.com
+- Location: Jumeirah Lake Towers, Dubai, United Arab Emirates
+
+## Key pages
+- Services: https://faynaztech.com/service
+- Hire engineers: https://faynaztech.com/hire-developer
+- Contact: https://faynaztech.com/contact

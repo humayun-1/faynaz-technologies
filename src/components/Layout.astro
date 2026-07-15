@@ -29,7 +29,7 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url.href} />
-    <meta property="og:image" content="/assets/img/logo.svg" />
+    <meta property="og:image" content="/assets/img/favicon.png" />
     <link rel="icon" href="/assets/img/favicon.png" />
     <title>{title}</title>
     <link rel="preload" href="/assets/css/plugins/bootstrap.min.css" as="style" />
@@ -40,11 +40,6 @@ const {
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
   <body>
-    <div class="cs-preloader cs-center">
-      <div class="cs-preloader_in">
-        <img src="/assets/img/favicon.png" alt="Faynaz Technologies" />
-      </div>
-    </div>
     <Header />
     <slot />
     <Footer />

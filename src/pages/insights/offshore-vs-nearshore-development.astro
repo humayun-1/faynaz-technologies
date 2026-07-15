@@ -1,0 +1,88 @@
+---
+import SiteClean from "../../components/SiteClean.astro";
+import { site } from "../../data/site";
+
+const title = "Offshore vs Nearshore Software Development: Which Is Better? | Faynaz Technologies";
+const description =
+  "Offshore vs nearshore development compared — cost, timezone overlap, communication, and quality — plus a simple rule for choosing the right model in 2026.";
+const published = "2026-07-16";
+const path = "/insights/offshore-vs-nearshore-development";
+
+const faqs = [
+  { q: "What is the difference between offshore and nearshore development?", a: "Offshore means hiring a team in a distant country, often with a large timezone gap and lower cost. Nearshore means hiring in a nearby country with a similar timezone, usually costing more but offering easier real-time collaboration." },
+  { q: "Is offshore or nearshore cheaper?", a: "Offshore is usually cheaper because rates in distant regions like South Asia and MENA are lower. Nearshore costs more but reduces coordination friction thanks to overlapping working hours." },
+  { q: "How do you get good timezone overlap with an offshore team?", a: "Choose an offshore partner whose working day overlaps yours. A Dubai-based studio, for example, overlaps European and UK mornings and Asian afternoons, giving several hours of real-time collaboration with both." },
+];
+
+const breadcrumb = {
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+    { "@type": "ListItem", position: 2, name: "Insights", item: `${site.url}/insights` },
+    { "@type": "ListItem", position: 3, name: "Offshore vs nearshore development", item: `${site.url}${path}` },
+  ],
+};
+const article = {
+  "@type": "Article", headline: "Offshore vs nearshore software development", description, datePublished: published, dateModified: published,
+  author: { "@id": `${site.url}/#organization` }, publisher: { "@id": `${site.url}/#organization` },
+  mainEntityOfPage: `${site.url}${path}`, inLanguage: "en",
+};
+const faqSchema = { "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+---
+
+<SiteClean title={title} description={description} canonical={path} schema={[breadcrumb, article, faqSchema]}>
+  <article class="fx-section fx-section--plain" style="padding-top:clamp(36px,5vw,64px)">
+    <div class="fx-wrap fx-guide">
+      <nav class="fx-crumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/insights">Insights</a><span class="sep">/</span><span>Offshore vs nearshore</span></nav>
+      <p class="fx-eyebrow">Comparison</p>
+      <h1 style="font-size:clamp(2rem,4.4vw,3rem);font-weight:660;letter-spacing:-.035em;line-height:1.06">Offshore vs nearshore software development</h1>
+
+      <div class="fx-answer" style="margin-top:28px">
+        <div class="lbl">Short answer</div>
+        <p><strong>Offshore</strong> means hiring a development team in a distant country — usually the <strong>lowest cost</strong>, with a larger timezone gap. <strong>Nearshore</strong> means a team in a nearby country with a <strong>similar timezone</strong> — more expensive, but easier real-time collaboration. The right choice comes down to one question: <strong>how much live overlap do you need versus how much you want to save?</strong> A well-placed offshore partner with good timezone overlap often gives you both.</p>
+      </div>
+
+      <div class="fx-prose">
+        <h2>Side by side</h2>
+        <div class="fx-tablewrap">
+          <table>
+            <thead><tr><th></th><th>Offshore</th><th>Nearshore</th></tr></thead>
+            <tbody>
+              <tr><td>Cost</td><td>Lowest</td><td>Moderate</td></tr>
+              <tr><td>Timezone overlap</td><td>Smaller (varies)</td><td>Large</td></tr>
+              <tr><td>Talent pool</td><td>Very large</td><td>Smaller</td></tr>
+              <tr><td>Best for</td><td>Budget-sensitive, ongoing builds</td><td>Tight real-time collaboration</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>When to choose offshore</h2>
+        <p>Offshore works best when you want to <strong>maximise value</strong>, the work can run with a few hours of daily overlap, and you have (or your partner provides) a senior lead who keeps communication tight. It is the most common choice for ongoing product and platform work.</p>
+
+        <h2>When to choose nearshore</h2>
+        <p>Nearshore is worth the premium when the work needs <strong>constant real-time collaboration</strong> — for example, a fast-moving product team pairing all day, or heavy stakeholder involvement.</p>
+
+        <h2>Where a Dubai studio fits</h2>
+        <p>Location matters more than the label. A <strong>Dubai-based team</strong> overlaps <strong>UK and European mornings</strong> and <strong>Asian afternoons</strong>, so you get offshore economics with several hours of daily real-time overlap — effectively the best of both. That's how we work with clients across the UK, Europe, Australia, and Singapore.</p>
+      </div>
+
+      <div class="fx-inline-cta">
+        <p>Want senior engineers with real timezone overlap?<span>Hire a dedicated team, or hand us a fixed-scope build.</span></p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="/hire-developer" class="fx-btn fx-btn--ghost"><span>Hire a team</span></a>
+          <a href="/contact" class="fx-btn fx-btn--primary"><span>Let's have a call</span></a>
+        </div>
+      </div>
+
+      <div class="fx-prose" style="margin-top:44px">
+        <h2>FAQ</h2>
+        {faqs.map((f, i) => (
+          <details class="fx-faq" open={i === 0}>
+            <summary><span>{f.q}</span><span class="plus" aria-hidden="true"></span></summary>
+            <div class="ans">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </article>
+</SiteClean>

@@ -1,0 +1,98 @@
+---
+import SiteClean from "../../components/SiteClean.astro";
+import { site } from "../../data/site";
+
+const title = "Insights — Guides on Hiring, DevOps & AI Automation | Faynaz Technologies";
+const description =
+  "Practical guides on hiring developers, DevOps, cloud, and AI automation — costs, comparisons, and how-tos for founders and engineering leaders.";
+
+// Guide index — add an entry here for each new insight/guide page.
+const guides = [
+  {
+    href: "/insights/cost-to-hire-a-developer",
+    tag: "Cost guide",
+    heading: "How much does it cost to hire a developer in 2026?",
+    blurb: "Rates by engagement model and region, and the best-value way to hire senior engineers.",
+  },
+  {
+    href: "/insights/ai-automation-cost",
+    tag: "Cost guide",
+    heading: "How much does AI automation cost in 2026?",
+    blurb: "From simple workflow automations to custom AI agents — typical price ranges and ROI.",
+  },
+  {
+    href: "/insights/offshore-vs-nearshore-development",
+    tag: "Comparison",
+    heading: "Offshore vs nearshore software development",
+    blurb: "Cost, timezone overlap, and quality compared — and a simple rule for choosing.",
+  },
+  {
+    href: "/insights/staff-augmentation-vs-managed-services",
+    tag: "Comparison",
+    heading: "Staff augmentation vs managed services",
+    blurb: "Who manages the work, who owns the outcome, and which model fits your project.",
+  },
+  {
+    href: "/insights/what-is-devops",
+    tag: "Glossary",
+    heading: "What is DevOps?",
+    blurb: "DevOps explained in plain terms — the core practices, the benefits, and when you need it.",
+  },
+];
+
+const breadcrumb = {
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+    { "@type": "ListItem", position: 2, name: "Insights", item: `${site.url}/insights` },
+  ],
+};
+const collection = {
+  "@type": "CollectionPage",
+  "@id": `${site.url}/insights#webpage`,
+  url: `${site.url}/insights`,
+  name: title,
+  isPartOf: { "@id": `${site.url}/#website` },
+  hasPart: guides.map((g) => ({ "@type": "Article", headline: g.heading, url: `${site.url}${g.href}` })),
+};
+---
+
+<SiteClean title={title} description={description} canonical="/insights" schema={[breadcrumb, collection]}>
+  <section class="fx-subhero">
+    <div class="fx-wrap">
+      <nav class="fx-crumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><span>Insights</span></nav>
+      <p class="fx-eyebrow">Insights</p>
+      <h1>Guides on hiring, DevOps &amp; AI automation.</h1>
+      <p class="fx-lead">Straight answers for founders and engineering leaders — what things cost, how models compare, and how to ship without the overhead.</p>
+    </div>
+  </section>
+
+  <section class="fx-section">
+    <div class="fx-wrap">
+      <div class="fx-cards fx-reveal">
+        {guides.map((g) => (
+          <a class="fx-card" href={g.href}>
+            <p class="fx-eyebrow" style="margin-bottom:12px">{g.tag}</p>
+            <h3>{g.heading}</h3>
+            <p>{g.blurb}</p>
+            <span class="more">Read the guide <span aria-hidden="true">→</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="fx-section fx-section--surface">
+    <div class="fx-wrap">
+      <div class="fx-cta fx-reveal">
+        <p class="fx-eyebrow">Rather just talk?</p>
+        <h2>Get a fixed quote for your project.</h2>
+        <p>Skip the research — tell us what you're building and we'll come back with a plan, a timeline, and a price.</p>
+        <div class="fx-cta-actions">
+          <a href="/contact" class="fx-btn fx-btn--light"><span>Let's have a call</span> <span class="fx-arrow" aria-hidden="true">→</span></a>
+          <a href="/#estimate" class="fx-btn fx-btn--outline-light"><span>Use the estimator</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</SiteClean>

@@ -1,11 +1,139 @@
 ---
-import Layout from '../components/Layout.astro';
-import content from '../content/pages/service.html?raw';
+import SiteClean from "../components/SiteClean.astro";
+import { site } from "../data/site";
 
-const title = "Services - Faynaz Technologies";
-const description = 'Faynaz Technologies crafts web development, AI, machine learning, and design solutions that help businesses grow.';
+const title = "Services — Full-Stack Development, DevOps & AI Automation | Faynaz Technologies";
+const description =
+  "Full-stack development, DevOps & cloud, and AI automation from a Dubai-based studio. Hire a dedicated team or a managed service. Book a discovery call.";
+
+const services = [
+  {
+    name: "Full-stack development",
+    id: "full-stack",
+    desc: "Web apps, SaaS platforms, MVPs, and APIs — built to convert, scale, and stay maintainable.",
+    points: ["Web & SaaS platforms", "MVPs and product builds", "API & integration work", "Performance & Core Web Vitals"],
+  },
+  {
+    name: "DevOps & cloud",
+    id: "devops",
+    desc: "CI/CD, Kubernetes, cloud migration, and infrastructure as code for faster, more reliable releases.",
+    points: ["CI/CD pipelines", "Kubernetes & containers", "Cloud migration (AWS/GCP/Azure)", "Infrastructure as code & reliability"],
+  },
+  {
+    name: "AI automation",
+    id: "ai-automation",
+    desc: "Workflow automation, AI agents, and LLM integration that remove repetitive manual work.",
+    points: ["Workflow & process automation", "AI agents & assistants", "LLM integration", "Business process automation"],
+  },
+];
+
+const faqs = [
+  { q: "What services does Faynaz Technologies offer?", a: "Full-stack software development, DevOps and cloud engineering, and AI automation — delivered as a dedicated team or a fixed-scope managed service." },
+  { q: "Can I hire engineers for a specific technology?", a: "Yes. We provide senior engineers across DevOps, cloud, AI/ML, and full-stack technologies on a monthly retainer, scaling up or down as you need." },
+  { q: "Do you work with clients outside the UAE?", a: "Yes. We are based in Dubai and work remotely with clients across the UK, Europe, Australia, Singapore, and the US." },
+];
+
+const breadcrumb = {
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+    { "@type": "ListItem", position: 2, name: "Services", item: `${site.url}/service` },
+  ],
+};
+const serviceNodes = services.map((s) => ({
+  "@type": "Service",
+  name: s.name,
+  serviceType: s.name,
+  description: s.desc,
+  provider: { "@id": `${site.url}/#organization` },
+  areaServed: site.areaServed,
+}));
+const faqSchema = {
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
 ---
 
-<Layout title={title} description={description} particles={false}>
-  <Fragment set:html={content} />
-</Layout>
+<SiteClean title={title} description={description} canonical="/service" schema={[breadcrumb, ...serviceNodes, faqSchema]}>
+  <section class="fx-subhero">
+    <div class="fx-wrap">
+      <nav class="fx-crumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><span>Services</span></nav>
+      <p class="fx-eyebrow">Services</p>
+      <h1>DevOps, AI automation &amp; full-stack engineering.</h1>
+      <p class="fx-lead">Three pillars, two ways to work. Hire senior engineers as a dedicated team, or hand us a fixed-scope build — from strategy to a dependable release.</p>
+      <div class="fx-subhero-actions">
+        <a href="/contact" class="fx-btn fx-btn--primary"><span>Let's have a call</span> <span class="fx-arrow" aria-hidden="true">→</span></a>
+        <a href="/#estimate" class="fx-btn fx-btn--ghost"><span>Estimate your project</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="fx-section">
+    <div class="fx-wrap">
+      <div class="fx-cards fx-reveal">
+        {services.map((s) => (
+          <div class="fx-card" id={s.id}>
+            <h3>{s.name}</h3>
+            <p>{s.desc}</p>
+            <ul class="fx-prose" style="margin-top:14px">
+              {s.points.map((p) => <li>{p}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- two models -->
+  <section class="fx-section fx-section--surface" id="models">
+    <div class="fx-wrap">
+      <div class="fx-head fx-reveal">
+        <p class="fx-eyebrow">Two ways to work with us</p>
+        <h2>Hire a team, or hand us the outcome.</h2>
+      </div>
+      <div class="fx-models fx-reveal">
+        <div class="fx-model">
+          <span class="tag">Dedicated team</span>
+          <h3>Hire senior engineers</h3>
+          <p>DevOps, AI, and full-stack engineers who plug into your team on a monthly retainer.</p>
+          <a href="/hire-developer" class="fx-btn fx-btn--ghost"><span>Hire an engineer</span></a>
+        </div>
+        <div class="fx-model alt">
+          <span class="tag">Managed service</span>
+          <h3>Hand us the outcome</h3>
+          <p>We scope, build, and deliver a defined outcome at a fixed price. You own all the code.</p>
+          <a href="/contact" class="fx-btn fx-btn--light"><span>Let's have a call</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="fx-section" id="faq">
+    <div class="fx-wrap fx-faq-grid">
+      <div class="fx-head fx-reveal" style="margin-bottom:0"><p class="fx-eyebrow">FAQ</p><h2>Common questions about our services.</h2></div>
+      <div class="fx-reveal">
+        {faqs.map((f, i) => (
+          <details class="fx-faq" open={i === 0}>
+            <summary><span>{f.q}</span><span class="plus" aria-hidden="true"></span></summary>
+            <div class="ans">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="fx-section fx-section--surface">
+    <div class="fx-wrap">
+      <div class="fx-cta fx-reveal">
+        <p class="fx-eyebrow">Start a project</p>
+        <h2>Let's scope your next release.</h2>
+        <p>Tell us what you're building. We'll come back with an honest plan, a timeline, and a fixed price.</p>
+        <div class="fx-cta-actions">
+          <a href="/contact" class="fx-btn fx-btn--light"><span>Let's have a call</span> <span class="fx-arrow" aria-hidden="true">→</span></a>
+          <a href="/#estimate" class="fx-btn fx-btn--outline-light"><span>Use the estimator</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</SiteClean>

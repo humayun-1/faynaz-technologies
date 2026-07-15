@@ -1,11 +1,311 @@
 ---
-import Layout from '../components/Layout.astro';
-import content from '../content/pages/index.html?raw';
+import SiteClean from "../components/SiteClean.astro";
+import { site } from "../data/site";
 
-const title = "Faynaz Tech - Web, AI, & design solutions that empower businesses to grow.";
-const description = 'Faynaz Technologies crafts web development, AI, machine learning, and design solutions that help businesses grow.';
+const title = "Hire DevOps, AI Automation & Full-Stack Engineers | Faynaz Technologies";
+const description = site.description;
+const keywords = [
+  "hire devops engineers", "ai automation agency", "full-stack development company",
+  "dedicated development team", "offshore software development", "software studio dubai",
+];
+
+// FAQ content drives both the visible accordion and the FAQPage schema (kept in sync).
+const faqs = [
+  {
+    key: "faq1",
+    q: "How do you price engagements?",
+    a: "Most projects are fixed-scope and fixed-price, agreed after a short discovery so there are no surprises. Dedicated engineers run on a simple monthly retainer.",
+  },
+  {
+    key: "faq2",
+    q: "How quickly can you start?",
+    a: "Typically within two weeks. We stay deliberately small so a senior team is available soon, rather than a queue months out.",
+  },
+  {
+    key: "faq3",
+    q: "Do we own the code and IP?",
+    a: "Yes, entirely. You own the repository, the infrastructure, and all IP from day one. We build on your accounts, so there is no lock-in.",
+  },
+  {
+    key: "faq4",
+    q: "Where is your team based?",
+    a: "We are based in Dubai, UAE, and work remotely with clients across the UK, Europe, Australia, Singapore, and the US.",
+  },
+  {
+    key: "faq5",
+    q: "What happens after launch?",
+    a: "We monitor the release, fix anything that surfaces, and can stay on a support retainer — or hand over clean, documented code.",
+  },
+];
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "@id": `${site.url}/#faq`,
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 ---
 
-<Layout title={title} description={description} particles={true}>
-  <Fragment set:html={content} />
-</Layout>
+<SiteClean title={title} description={description} keywords={keywords} schema={[faqSchema]}>
+  <!-- HERO -->
+  <section class="fx-hero fx-section--plain">
+    <div class="fx-wrap">
+      <div class="fx-hero-grid">
+        <div class="fx-hero-copy">
+          <p class="fx-eyebrow" data-i18n="hero_eyebrow">Software · DevOps · AI automation studio</p>
+          <h1>
+            <span data-i18n="hero_h1a">Software, </span><span class="hl" data-i18n="hero_h1b">DevOps &amp; AI automation</span><span data-i18n="hero_h1c"> — shipped and run for you.</span>
+          </h1>
+          <p class="fx-lead" data-i18n="hero_lead">Hire senior DevOps, AI, and full-stack engineers — as a dedicated team or a managed service. From strategy to a dependable release, with none of the agency overhead.</p>
+          <div class="fx-hero-actions">
+            <a href="/contact" class="fx-btn fx-btn--primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6.5 3.5 9 4l1 3.5-1.8 1.4a12 12 0 0 0 5.4 5.4L15 16.5 18.5 18l.5 2.5a1.6 1.6 0 0 1-1.7 1.9A16 16 0 0 1 3.6 8.2 1.6 1.6 0 0 1 5.5 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-i18n="hero_cta1">Let's have a call</span> <span class="fx-arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="/#estimate" class="fx-btn fx-btn--ghost"><span data-i18n="hero_cta2">Estimate your project</span></a>
+          </div>
+          <div class="fx-hero-meta"><span class="dot" aria-hidden="true"></span><span data-i18n="hero_meta">Booking projects for Q3 — typical start within two weeks.</span></div>
+        </div>
+        <div class="fx-hero-visual fx-reveal">
+          <div class="fx-console" role="img" aria-label="Release console showing uptime, deployments and throughput.">
+            <div class="fx-console-bar"><div class="lights" aria-hidden="true"><span></span><span></span><span></span></div><div class="tag">release · v2.4.0</div></div>
+            <div class="fx-kpis">
+              <div class="fx-kpi"><div class="n">99.98<span class="up">▲</span></div><div class="l" data-i18n="k_uptime">Uptime this quarter</div></div>
+              <div class="fx-kpi"><div class="n">128</div><div class="l" data-i18n="k_deploys">Deploys shipped</div></div>
+            </div>
+            <div class="fx-chart"><div class="chd"><span>throughput</span><span>+31%</span></div>
+              <div class="fx-bars" aria-hidden="true"><i style="height:38%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:66%"></i><i style="height:58%"></i><i class="hi" style="height:92%"></i><i style="height:74%"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fx-marquee" aria-hidden="true">
+        <div class="fx-marquee-track">
+          <span data-i18n="m1">Full-stack development</span><span data-i18n="m2">DevOps &amp; cloud</span><span data-i18n="m3">AI automation</span><span data-i18n="m4">AI agents</span><span data-i18n="m5">Dedicated teams</span><span data-i18n="m6">QA &amp; release</span>
+          <span data-i18n="m1">Full-stack development</span><span data-i18n="m2">DevOps &amp; cloud</span><span data-i18n="m3">AI automation</span><span data-i18n="m4">AI agents</span><span data-i18n="m5">Dedicated teams</span><span data-i18n="m6">QA &amp; release</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="fx-trust">
+    <div class="fx-wrap">
+      <p class="fx-trust-label" data-i18n="trust_label">Teams in fintech, healthcare, and SaaS trust us to ship</p>
+      <div class="fx-logos" aria-hidden="true"><span>Northwind</span><span>Ledgerly</span><span>Corewave</span><span>Meridian</span><span>Vantgo</span></div>
+    </div>
+  </section>
+
+  <!-- SERVICES (3 pillars) -->
+  <section class="fx-section" id="services">
+    <div class="fx-wrap">
+      <div class="fx-head fx-reveal">
+        <p class="fx-eyebrow" data-i18n="svc_eyebrow">Services</p>
+        <h2 data-i18n="svc_h2">Three pillars that put engineering to work.</h2>
+        <p data-i18n="svc_p">Focused offerings, scoped clearly, priced so you know what you're buying before we start.</p>
+      </div>
+      <div class="fx-cards">
+        <a class="fx-card fx-reveal" href="/service">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5"/></svg></div>
+          <h3 data-i18n="svc1_h">Full-stack development</h3>
+          <p data-i18n="svc1_p">Web apps, SaaS platforms, MVPs, and APIs built to convert and scale.</p>
+          <span class="more" data-i18n="svc_more">Learn more <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="fx-card fx-reveal" href="/service">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z"/><path d="M9 12l2 2 4-4.5"/></svg></div>
+          <h3 data-i18n="svc2_h">DevOps &amp; cloud</h3>
+          <p data-i18n="svc2_p">CI/CD, Kubernetes, cloud migration, infrastructure as code, and reliability.</p>
+          <span class="more" data-i18n="svc_more">Learn more <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="fx-card fx-reveal" href="/service">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.5 7.6 11 15.5M16.5 7.6 13 15.5M8 6h8"/></svg></div>
+          <h3 data-i18n="svc3_h">AI automation</h3>
+          <p data-i18n="svc3_p">Workflow automation, AI agents, and LLM integration that cut manual work.</p>
+          <span class="more" data-i18n="svc_more">Learn more <span aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO MODELS -->
+  <section class="fx-section fx-section--surface" id="models">
+    <div class="fx-wrap">
+      <div class="fx-head fx-reveal">
+        <p class="fx-eyebrow" data-i18n="mdl_eyebrow">Two ways to work with us</p>
+        <h2 data-i18n="mdl_h2">Hire a team, or hand us the outcome.</h2>
+      </div>
+      <div class="fx-models fx-reveal">
+        <div class="fx-model">
+          <span class="tag" data-i18n="mdl1_tag">Dedicated team</span>
+          <h3 data-i18n="mdl1_h">Hire senior engineers</h3>
+          <p data-i18n="mdl1_p">DevOps, AI, and full-stack engineers who plug into your team on a monthly retainer.</p>
+          <ul>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-9"/></svg><span data-i18n="mdl1_l1">Full control, daily collaboration</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-9"/></svg><span data-i18n="mdl1_l2">Senior engineers only</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-9"/></svg><span data-i18n="mdl1_l3">Scale up or down flexibly</span></li>
+          </ul>
+          <a href="/hire-developer" class="fx-btn fx-btn--ghost"><span data-i18n="mdl1_cta">Hire an engineer</span></a>
+        </div>
+        <div class="fx-model alt">
+          <span class="tag" data-i18n="mdl2_tag">Managed service</span>
+          <h3 data-i18n="mdl2_h">Hand us the outcome</h3>
+          <p data-i18n="mdl2_p">We scope, build, and deliver a defined outcome at a fixed price.</p>
+          <ul>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-9"/></svg><span data-i18n="mdl2_l1">Fixed scope and price</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-9"/></svg><span data-i18n="mdl2_l2">QA and release built in</span></li>
+            <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-9"/></svg><span data-i18n="mdl2_l3">You own all the code</span></li>
+          </ul>
+          <a href="/contact" class="fx-btn fx-btn--light"><span data-i18n="mdl2_cta">Let's have a call</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTIMATOR -->
+  <section class="fx-section" id="estimate">
+    <div class="fx-wrap">
+      <div class="fx-head fx-reveal">
+        <p class="fx-eyebrow" data-i18n="est_eyebrow">Project estimator</p>
+        <h2 data-i18n="est_h2">Get a ballpark in under a minute.</h2>
+        <p data-i18n="est_p">Pick what you're building. The estimate updates live — no form, no waiting for a sales call.</p>
+      </div>
+      <div class="fx-est-grid">
+        <div class="fx-est-panel fx-reveal">
+          <div class="fx-est-step">
+            <div class="fx-est-q"><span class="qn">01</span><span data-i18n="est_q1">What are you building?</span></div>
+            <div class="fx-opts" data-group="type" data-mode="single">
+              <button class="fx-opt" type="button" aria-pressed="true" data-cost="12000"><span data-i18n="t_web">Website</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="24000"><span data-i18n="t_app">Web app</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="30000"><span data-i18n="t_mobile">Mobile app</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="20000"><span data-i18n="t_ai">AI / automation</span></button>
+            </div>
+          </div>
+          <div class="fx-est-step">
+            <div class="fx-est-q"><span class="qn">02</span><span data-i18n="est_q2">Which platforms?</span></div>
+            <div class="fx-opts" data-group="platform" data-mode="multi">
+              <button class="fx-opt" type="button" aria-pressed="true" data-cost="0"><span class="tick">✓</span><span data-i18n="p_web">Web</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="9000"><span class="tick">✓</span><span data-i18n="p_ios">iOS</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="9000"><span class="tick">✓</span><span data-i18n="p_android">Android</span></button>
+            </div>
+          </div>
+          <div class="fx-est-step">
+            <div class="fx-est-q"><span class="qn">03</span><span data-i18n="est_q3">Key features</span></div>
+            <div class="fx-opts" data-group="features" data-mode="multi">
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="4000"><span class="tick">✓</span><span data-i18n="f_auth">User accounts</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="7000"><span class="tick">✓</span><span data-i18n="f_pay">Payments</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="6000"><span class="tick">✓</span><span data-i18n="f_dash">Dashboard / admin</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="6500"><span class="tick">✓</span><span data-i18n="f_api">Integrations / API</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="9000"><span class="tick">✓</span><span data-i18n="f_ai">AI features</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="4500"><span class="tick">✓</span><span data-i18n="f_cms">CMS / content</span></button>
+            </div>
+          </div>
+          <div class="fx-est-step">
+            <div class="fx-est-q"><span class="qn">04</span><span data-i18n="est_q4">Timeline</span></div>
+            <div class="fx-opts" data-group="timeline" data-mode="single">
+              <button class="fx-opt" type="button" aria-pressed="true" data-mult="1"><span data-i18n="tl_std">Standard</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-mult="1.25"><span data-i18n="tl_fast">Fast-track</span></button>
+            </div>
+          </div>
+        </div>
+        <aside class="fx-readout" aria-live="polite">
+          <div class="rl" data-i18n="est_rl">Estimated investment</div>
+          <div class="price"><span class="cur">$</span><span id="fx-est-min">0</span> – <span class="cur">$</span><span id="fx-est-max">0</span></div>
+          <div class="rrow"><span data-i18n="est_hours">Engineering hours</span><b id="fx-est-hours">0</b></div>
+          <div class="rrow"><span data-i18n="est_weeks">Delivery window</span><b><span id="fx-est-weeks">0</span> <span data-i18n="est_wk">weeks</span></b></div>
+          <div class="rrow"><span data-i18n="est_team">Team size</span><b id="fx-est-team">0</b></div>
+          <a href="/contact" class="fx-btn fx-btn--primary"><span data-i18n="est_book">Let's have a call to refine it</span></a>
+          <div class="note" data-i18n="est_note">Indicative only. Final scope is fixed after discovery.</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="fx-section fx-section--surface" id="why">
+    <div class="fx-wrap fx-why-grid">
+      <div class="fx-head fx-reveal" style="margin-bottom:0">
+        <p class="fx-eyebrow" data-i18n="why_eyebrow">Why teams choose us</p>
+        <h2 data-i18n="why_h2">Senior work, without the agency friction.</h2>
+        <p data-i18n="why_p">You get the people doing the thinking in the same room as the people writing the code.</p>
+      </div>
+      <div class="fx-why-list fx-reveal">
+        <div class="fx-why-item"><span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m13 3-8 10h6l-1 8 8-10h-6l1-8Z"/></svg></span><div><h3 data-i18n="why1_h">Speed you can plan around</h3><p data-i18n="why1_p">Small senior teams and tight scope mean a first release in weeks, with dates we hold to.</p></div></div>
+        <div class="fx-why-item"><span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H9l-4 3V5Z"/></svg></span><div><h3 data-i18n="why2_h">Direct communication</h3><p data-i18n="why2_p">You talk to the engineers and lead — no account layer translating requirements twice.</p></div></div>
+        <div class="fx-why-item"><span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14"/></svg></span><div><h3 data-i18n="why3_h">Real technical depth</h3><p data-i18n="why3_p">Architecture and performance decisions made by people who've shipped them before.</p></div></div>
+        <div class="fx-why-item"><span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21c-4-2-7-5.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.5-3 8-7 10Z"/></svg></span><div><h3 data-i18n="why4_h">Built around the business</h3><p data-i18n="why4_p">We start from the outcome you're measured on, then choose the tech.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="fx-section" id="process">
+    <div class="fx-wrap">
+      <div class="fx-head fx-reveal"><p class="fx-eyebrow" data-i18n="proc_eyebrow">How we work</p><h2 data-i18n="proc_h2">A four-step engagement, start to scale.</h2></div>
+      <div class="fx-process fx-reveal">
+        <div class="fx-pstep"><div class="num" data-i18n="proc_s1n">Step 01</div><h3 data-i18n="proc1_h">Discover</h3><p data-i18n="proc1_p">We map the goal, constraints, and success metric before any code.</p></div>
+        <div class="fx-pstep"><div class="num" data-i18n="proc_s2n">Step 02</div><h3 data-i18n="proc2_h">Design</h3><p data-i18n="proc2_p">Flows, interfaces, and architecture — agreed and scoped to a fixed plan.</p></div>
+        <div class="fx-pstep"><div class="num" data-i18n="proc_s3n">Step 03</div><h3 data-i18n="proc3_h">Build</h3><p data-i18n="proc3_p">Senior engineers ship in short cycles, with QA baked into every release.</p></div>
+        <div class="fx-pstep"><div class="num" data-i18n="proc_s4n">Step 04</div><h3 data-i18n="proc4_h">Launch &amp; scale</h3><p data-i18n="proc4_p">We go live, watch the numbers, and keep the system ready for what's next.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="fx-section fx-section--surface" id="work">
+    <div class="fx-wrap">
+      <div class="fx-head fx-reveal"><p class="fx-eyebrow" data-i18n="work_eyebrow">Selected work</p><h2 data-i18n="work_h2">Measured by outcomes, not screenshots.</h2></div>
+      <div class="fx-work-grid">
+        <article class="fx-work fx-reveal"><div class="sector">Fintech</div><div class="stat">-42%</div><h3 data-i18n="work1_h">Rebuilt an operations console that cut internal processing time.</h3><p data-i18n="work1_p">Consolidated four manual tools into one workflow, removing daily handoffs.</p><div class="foot" data-i18n="work1_f">Operations platform · 8-week build</div></article>
+        <article class="fx-work fx-reveal"><div class="sector">SaaS</div><div class="stat">+31%</div><h3 data-i18n="work2_h">A conversion-focused rebuild that lifted qualified demos.</h3><p data-i18n="work2_p">New messaging, hierarchy, and page speed turned visitors into booked calls.</p><div class="foot" data-i18n="work2_f">Marketing site · 5-week build</div></article>
+        <article class="fx-work fx-reveal"><div class="sector">Healthcare</div><div class="stat">~0</div><h3 data-i18n="work3_h">Automated a workflow down to near-zero manual handoffs.</h3><p data-i18n="work3_p">Structured forms and rules routing replaced spreadsheets and re-entry.</p><div class="foot" data-i18n="work3_f">Workflow automation · 7-week build</div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="fx-section" id="voices">
+    <div class="fx-wrap">
+      <div class="fx-head fx-reveal"><p class="fx-eyebrow" data-i18n="voi_eyebrow">In their words</p><h2 data-i18n="voi_h2">What founders say after we ship.</h2></div>
+      <div class="fx-quotes">
+        <figure class="fx-quote fx-reveal"><blockquote data-i18n="q1">“They scoped it honestly, hit the dates, and the system does exactly what we needed. Rare to work with a team this direct.”</blockquote><figcaption class="who"><span class="av" aria-hidden="true">SR</span><span><span class="nm">Sara Rahman</span><br><span class="rl">COO, Ledgerly</span></span></figcaption></figure>
+        <figure class="fx-quote fx-reveal"><blockquote data-i18n="q2">“We got a partner who understood the business. Demos are up and the product finally feels like us.”</blockquote><figcaption class="who"><span class="av" aria-hidden="true">DK</span><span><span class="nm">Daniel Kwon</span><br><span class="rl">Founder &amp; CEO, Corewave</span></span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="fx-section fx-section--surface" id="faq">
+    <div class="fx-wrap fx-faq-grid">
+      <div class="fx-head fx-reveal" style="margin-bottom:0"><p class="fx-eyebrow" data-i18n="faq_eyebrow">FAQ</p><h2 data-i18n="faq_h2">The questions decision-makers ask.</h2></div>
+      <div class="fx-reveal">
+        {faqs.map((f, i) => (
+          <details class="fx-faq" open={i === 0}>
+            <summary><span data-i18n={`${f.key}_q`}>{f.q}</span><span class="plus" aria-hidden="true"></span></summary>
+            <div class="ans" data-i18n={`${f.key}_a`}>{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="fx-section" id="contact-cta">
+    <div class="fx-wrap">
+      <div class="fx-cta fx-reveal">
+        <p class="fx-eyebrow" data-i18n="cta_eyebrow">Start a project</p>
+        <h2 data-i18n="cta_h2">Let's scope your next release.</h2>
+        <p data-i18n="cta_p">Tell us what you're trying to move. We'll come back with an honest plan, a timeline, and a fixed price.</p>
+        <div class="fx-cta-actions">
+          <a href="/contact" class="fx-btn fx-btn--light">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6.5 3.5 9 4l1 3.5-1.8 1.4a12 12 0 0 0 5.4 5.4L15 16.5 18.5 18l.5 2.5a1.6 1.6 0 0 1-1.7 1.9A16 16 0 0 1 3.6 8.2 1.6 1.6 0 0 1 5.5 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-i18n="cta_b1">Let's have a call</span> <span class="fx-arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="/#estimate" class="fx-btn fx-btn--outline-light"><span data-i18n="cta_b2">Use the estimator</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</SiteClean>

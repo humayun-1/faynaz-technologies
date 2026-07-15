@@ -46,7 +46,6 @@
   $(window).on("load", function () {
     $(window).trigger("scroll");
     $(window).trigger("resize");
-    preloader();
     isotopInit();
   });
 
@@ -83,15 +82,7 @@
   });
 
   /*--------------------------------------------------------------
-    1. Preloader
-  --------------------------------------------------------------*/
-  function preloader() {
-    $(".cs-preloader_in").fadeOut();
-    $(".cs-preloader").delay(150).fadeOut("slow");
-  }
-
-  /*--------------------------------------------------------------
-    2. Mobile Menu
+    1. Mobile Menu
   --------------------------------------------------------------*/
   function mainNav() {
     $(".cs-nav").append('<span class="cs-munu_toggle"><span></span></span>');

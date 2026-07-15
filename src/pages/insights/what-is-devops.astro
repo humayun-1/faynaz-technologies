@@ -1,0 +1,81 @@
+---
+import SiteClean from "../../components/SiteClean.astro";
+import { site } from "../../data/site";
+
+const title = "What Is DevOps? A Clear 2026 Explanation | Faynaz Technologies";
+const description =
+  "DevOps explained in plain terms: what it is, the core practices (CI/CD, IaC, monitoring), the business benefits, and when your team actually needs it.";
+const published = "2026-07-16";
+const path = "/insights/what-is-devops";
+
+const faqs = [
+  { q: "What is DevOps in simple terms?", a: "DevOps is a way of working that combines software development and IT operations so a team can build, test, release, and run software faster and more reliably — mostly by automating the steps between writing code and running it in production." },
+  { q: "Is DevOps a role or a practice?", a: "Both. DevOps is primarily a set of practices and a culture, but 'DevOps engineer' is also a common role focused on automation, CI/CD, cloud infrastructure, and reliability." },
+  { q: "What is the difference between DevOps and SRE?", a: "DevOps is the broad practice of automating and streamlining software delivery. Site Reliability Engineering (SRE) is a specific discipline, originated at Google, that applies engineering to keep systems reliable — often seen as one way of implementing DevOps." },
+];
+
+const breadcrumb = {
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+    { "@type": "ListItem", position: 2, name: "Insights", item: `${site.url}/insights` },
+    { "@type": "ListItem", position: 3, name: "What is DevOps?", item: `${site.url}${path}` },
+  ],
+};
+const article = {
+  "@type": "Article", headline: "What is DevOps?", description, datePublished: published, dateModified: published,
+  author: { "@id": `${site.url}/#organization` }, publisher: { "@id": `${site.url}/#organization` },
+  mainEntityOfPage: `${site.url}${path}`, inLanguage: "en",
+};
+const faqSchema = { "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+---
+
+<SiteClean title={title} description={description} canonical={path} schema={[breadcrumb, article, faqSchema]}>
+  <article class="fx-section fx-section--plain" style="padding-top:clamp(36px,5vw,64px)">
+    <div class="fx-wrap fx-guide">
+      <nav class="fx-crumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/insights">Insights</a><span class="sep">/</span><span>What is DevOps?</span></nav>
+      <p class="fx-eyebrow">Glossary</p>
+      <h1 style="font-size:clamp(2rem,4.4vw,3rem);font-weight:660;letter-spacing:-.035em;line-height:1.06">What is DevOps?</h1>
+
+      <div class="fx-answer" style="margin-top:28px">
+        <div class="lbl">Short answer</div>
+        <p><strong>DevOps</strong> is a way of working that combines software <strong>development</strong> and IT <strong>operations</strong> so teams can ship software faster and more reliably. It does this by automating the path from code to production — building, testing, releasing, and monitoring — and by getting the people who write software and the people who run it working as one team.</p>
+      </div>
+
+      <div class="fx-prose">
+        <h2>The core DevOps practices</h2>
+        <ul>
+          <li><strong>CI/CD (continuous integration &amp; delivery):</strong> automatically build, test, and release code so changes ship in small, safe increments.</li>
+          <li><strong>Infrastructure as code (IaC):</strong> define servers and cloud resources in version-controlled files instead of clicking through consoles.</li>
+          <li><strong>Containers &amp; orchestration:</strong> package apps with Docker and run them reliably with Kubernetes.</li>
+          <li><strong>Monitoring &amp; observability:</strong> watch performance, errors, and uptime so problems are caught before users are.</li>
+          <li><strong>Automation everywhere:</strong> remove manual, error-prone steps from the release process.</li>
+        </ul>
+
+        <h2>Why it matters to the business</h2>
+        <p>Good DevOps is not a cost centre — it is how you ship more often with fewer outages. Teams that adopt it typically see <strong>faster releases</strong>, <strong>fewer failed deployments</strong>, and <strong>quicker recovery</strong> when something breaks. That translates directly into features reaching customers sooner and less time lost to firefighting.</p>
+
+        <h2>When does your team need DevOps?</h2>
+        <p>You likely need DevOps help when deployments are manual or scary, releases are slow, environments drift, or outages take too long to recover from. Bringing in experienced DevOps engineers — either as a <a href="/service#devops">managed engagement</a> or as <a href="/hire-developer">dedicated hires</a> — is usually the fastest way to get pipelines, cloud, and reliability in order.</p>
+      </div>
+
+      <div class="fx-inline-cta">
+        <p>Need DevOps and cloud set up properly?<span>We build CI/CD, Kubernetes, and reliable infrastructure — as a team or a project.</span></p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="/service#devops" class="fx-btn fx-btn--ghost"><span>DevOps services</span></a>
+          <a href="/contact" class="fx-btn fx-btn--primary"><span>Let's have a call</span></a>
+        </div>
+      </div>
+
+      <div class="fx-prose" style="margin-top:44px">
+        <h2>FAQ</h2>
+        {faqs.map((f, i) => (
+          <details class="fx-faq" open={i === 0}>
+            <summary><span>{f.q}</span><span class="plus" aria-hidden="true"></span></summary>
+            <div class="ans">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </article>
+</SiteClean>
