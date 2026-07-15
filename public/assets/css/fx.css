@@ -357,3 +357,6 @@ body.fx-loading { overflow: hidden; }
 .fx-inline-cta { margin-top: 40px; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
 .fx-inline-cta p { font-weight: 600; font-size: 1.05rem; }
 .fx-inline-cta span { color: var(--muted); font-size: .92rem; font-weight: 400; display: block; margin-top: 3px; }
+
+.fx-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 4px; }
+.fx-chip { font-size: .86rem; font-weight: 550; padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--ink-soft); }
