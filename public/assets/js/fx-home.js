@@ -31,13 +31,15 @@
     mdl2_cta: "لنتحدّث",
     est_eyebrow: "مُقدّر المشروع", est_h2: "احصل على تقدير مبدئي في أقل من دقيقة.",
     est_p: "اختر ما تبنيه، والتقدير يتحدّث فورًا — دون نماذج أو انتظار مكالمة مبيعات.",
-    est_q1: "ماذا تبني؟", est_q2: "أي منصّات؟", est_q3: "الميزات الأساسية", est_q4: "الجدول الزمني",
-    t_web: "موقع", t_app: "تطبيق ويب", t_mobile: "تطبيق موبايل", t_ai: "ذكاء / أتمتة",
+    est_q1: "ماذا تبني؟", est_q2: "حجم المشروع", est_q3: "أي منصّات؟", est_q4: "الميزات الأساسية", est_q5: "إضافات للمؤسسات", est_q6: "الجدول الزمني", est_q7: "دعم مستمر؟",
+    t_web: "موقع", t_app: "تطبيق ويب", t_mobile: "تطبيق موبايل", t_saas: "منصّة SaaS", t_ai: "ذكاء / أتمتة",
+    sc_mvp: "نموذج أولي (MVP)", sc_growth: "مرحلة النمو", sc_ent: "درجة المؤسسات",
     p_web: "ويب", p_ios: "iOS", p_android: "أندرويد",
-    f_auth: "حسابات المستخدمين", f_pay: "المدفوعات", f_dash: "لوحة تحكّم", f_api: "تكاملات / API", f_ai: "ميزات ذكاء", f_cms: "إدارة محتوى",
-    tl_std: "قياسي", tl_fast: "مسار سريع",
-    est_rl: "الاستثمار التقديري", est_hours: "ساعات الهندسة", est_weeks: "مدّة التسليم", est_wk: "أسابيع", est_team: "حجم الفريق",
-    est_book: "لنتحدّث لتدقيق التقدير", est_note: "تقديري فقط. يُحدَّد النطاق النهائي بعد الاكتشاف.",
+    f_auth: "حسابات المستخدمين", f_pay: "المدفوعات", f_dash: "لوحة تحكّم", f_api: "تكاملات / API", f_ai: "ميزات ذكاء", f_cms: "إدارة محتوى", f_rt: "وقت حقيقي / محادثة", f_notif: "إشعارات", f_analytics: "تحليلات",
+    a_design: "تصميم واجهة جديد", a_compliance: "أمن وامتثال (SOC 2 / HIPAA)", a_multitenant: "بنية متعددة المستأجرين", a_devops: "إعداد سحابة وDevOps",
+    tl_std: "قياسي", tl_fast: "مسار سريع", su_no: "ليس الآن", su_yes: "خطة رعاية",
+    est_rl: "الاستثمار التقديري", est_hours: "ساعات الهندسة", est_weeks: "مدّة التسليم", est_wk: "أسابيع", est_team: "حجم الفريق", est_care: "رعاية مستمرة", est_mo: "/شهر",
+    est_book: "لنتحدّث لتدقيق التقدير", est_note: "نطاق تقديري. احجز مكالمة لعرض سعر ثابت ومُفصّل.",
     why_eyebrow: "لماذا تختارنا الفِرق", why_h2: "عمل احترافي دون احتكاك الوكالات.",
     why_p: "يجلس أصحاب التفكير في الغرفة نفسها مع كاتبي الكود.",
     why1_h: "سرعة يمكنك التخطيط حولها", why1_p: "فرق صغيرة خبيرة ونطاق محكم يعنيان إصدارًا أوّل خلال أسابيع بمواعيد نلتزم بها.",
@@ -113,25 +115,50 @@
 
   /* ---------- estimator ---------- */
   var RATE = 85;
+  function sumPressed(group) {
+    var s = 0;
+    document.querySelectorAll('[data-group="' + group + '"] .fx-opt[aria-pressed="true"]').forEach(function (b) { s += +(b.dataset.cost || 0); });
+    return s;
+  }
+  function multOf(group) {
+    var el = document.querySelector('[data-group="' + group + '"] .fx-opt[aria-pressed="true"]');
+    return el ? +(el.dataset.mult || 1) : 1;
+  }
   function calc() {
-    var base = 0, mult = 1, add = 0;
-    document.querySelectorAll('[data-group="type"] .fx-opt[aria-pressed="true"]').forEach(function (b) { base += +b.dataset.cost; });
-    document.querySelectorAll('[data-group="platform"] .fx-opt[aria-pressed="true"]').forEach(function (b) { add += +b.dataset.cost; });
-    document.querySelectorAll('[data-group="features"] .fx-opt[aria-pressed="true"]').forEach(function (b) { add += +b.dataset.cost; });
-    var tl = document.querySelector('[data-group="timeline"] .fx-opt[aria-pressed="true"]');
-    if (tl) mult = +tl.dataset.mult;
-    var total = (base + add) * mult; if (total <= 0) total = 12000;
+    var base = sumPressed("type");
+    var add = sumPressed("platform") + sumPressed("features") + sumPressed("addons");
+    var scale = multOf("scale"), tmult = multOf("timeline");
+    var supEl = document.querySelector('[data-group="support"] .fx-opt[aria-pressed="true"]');
+    var support = supEl ? +(supEl.dataset.support || 0) : 0;
+    var total = (base + add) * scale * tmult; if (total <= 0) total = 10000;
     var min = Math.round(total * 0.9 / 500) * 500, max = Math.round(total * 1.25 / 500) * 500;
     var hours = Math.round(total / RATE / 10) * 10;
-    var weeks = Math.max(3, Math.round(hours / 60)); if (mult > 1) weeks = Math.max(3, Math.round(weeks * 0.8));
-    var team = total > 45000 ? "4–5" : total > 26000 ? "3–4" : "2–3";
-    set("fx-est-min", min.toLocaleString("en-US"));
-    set("fx-est-max", max.toLocaleString("en-US"));
-    set("fx-est-hours", hours.toLocaleString("en-US"));
-    set("fx-est-weeks", weeks);
-    set("fx-est-team", team);
+    var weeks = Math.max(3, Math.round(hours / 60));
+    if (tmult > 1) weeks = Math.max(3, Math.round(weeks * 0.8));
+    if (scale > 1.3) weeks = Math.round(weeks * 1.15);
+    var team = total > 60000 ? "5–6" : total > 40000 ? "4–5" : total > 24000 ? "3–4" : "2–3";
+    var monthly = support ? Math.max(1500, Math.round(total * 0.08 / 250) * 250) : 0;
+    animateNum("fx-est-min", min); animateNum("fx-est-max", max); animateNum("fx-est-hours", hours);
+    setText("fx-est-weeks", weeks); setText("fx-est-team", team);
+    animateNum("fx-est-care", monthly);
+    var careRow = document.getElementById("fx-est-care-row");
+    if (careRow) careRow.style.display = support ? "flex" : "none";
   }
-  function set(id, v) { var el = document.getElementById(id); if (el) el.textContent = v; }
+  function setText(id, v) { var el = document.getElementById(id); if (el) el.textContent = v; }
+  function animateNum(id, to) {
+    var el = document.getElementById(id); if (!el) return;
+    var from = parseInt((el.textContent || "0").replace(/[^0-9]/g, ""), 10) || 0;
+    if (reduce || from === to) { el.textContent = to.toLocaleString("en-US"); return; }
+    var start = null, dur = 450;
+    function step(ts) {
+      if (start === null) start = ts;
+      var p = Math.min(1, (ts - start) / dur);
+      var val = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3)));
+      el.textContent = val.toLocaleString("en-US");
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
   document.querySelectorAll(".fx-opts").forEach(function (group) {
     var mode = group.dataset.mode;
     group.addEventListener("click", function (e) {

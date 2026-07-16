@@ -1,0 +1,86 @@
+---
+import SiteClean from "../../components/SiteClean.astro";
+import RelatedGuides from "../../components/fx/RelatedGuides.astro";
+import { site } from "../../data/site";
+
+const title = "What Is CI/CD? A Plain-English 2026 Guide";
+const description =
+  "CI/CD explained simply: what continuous integration and continuous delivery mean, how a pipeline works, the benefits, and the common tools.";
+const published = "2026-07-16";
+const path = "/insights/what-is-ci-cd";
+
+const faqs = [
+  { q: "What does CI/CD stand for?", a: "CI/CD stands for continuous integration and continuous delivery (or continuous deployment). It is the practice of automatically building, testing, and releasing software so changes reach users quickly and safely." },
+  { q: "What is the difference between continuous delivery and continuous deployment?", a: "Continuous delivery automatically prepares every change for release but a human approves the final push to production. Continuous deployment goes one step further and releases every passing change automatically, with no manual gate." },
+  { q: "What tools are used for CI/CD?", a: "Common tools include GitHub Actions, GitLab CI, Jenkins, CircleCI, and Argo CD, usually combined with containers (Docker) and orchestration (Kubernetes)." },
+];
+
+const breadcrumb = {
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+    { "@type": "ListItem", position: 2, name: "Insights", item: `${site.url}/insights` },
+    { "@type": "ListItem", position: 3, name: "What is CI/CD?", item: `${site.url}${path}` },
+  ],
+};
+const article = {
+  "@type": "Article", headline: "What is CI/CD?", description, datePublished: published, dateModified: published,
+  author: { "@id": `${site.url}/#organization` }, publisher: { "@id": `${site.url}/#organization` },
+  mainEntityOfPage: `${site.url}${path}`, inLanguage: "en",
+};
+const faqSchema = { "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+---
+
+<SiteClean title={title} description={description} canonical={path} schema={[breadcrumb, article, faqSchema]}>
+  <article class="fx-section fx-section--plain" style="padding-top:clamp(36px,5vw,64px)">
+    <div class="fx-wrap fx-guide">
+      <nav class="fx-crumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/insights">Insights</a><span class="sep">/</span><span>What is CI/CD?</span></nav>
+      <p class="fx-eyebrow">Glossary</p>
+      <h1 style="font-size:clamp(2rem,4.4vw,3rem);font-weight:660;letter-spacing:-.035em;line-height:1.06">What is CI/CD?</h1>
+
+      <div class="fx-answer" style="margin-top:28px">
+        <div class="lbl">Short answer</div>
+        <p><strong>CI/CD</strong> stands for <strong>continuous integration</strong> and <strong>continuous delivery</strong>. It's the practice of automatically <strong>building, testing, and releasing</strong> software every time code changes — so teams ship small, safe updates often, instead of big, risky releases rarely.</p>
+      </div>
+
+      <div class="fx-prose">
+        <h2>Continuous integration (CI)</h2>
+        <p>CI means every code change is automatically merged, built, and tested against the rest of the codebase. If a change breaks something, the team finds out in minutes — not weeks later. This keeps the main branch always working.</p>
+
+        <h2>Continuous delivery / deployment (CD)</h2>
+        <p>CD automates the release itself. <strong>Continuous delivery</strong> gets every change ready to ship and lets a human approve the final push. <strong>Continuous deployment</strong> removes even that gate — every change that passes the tests goes live automatically.</p>
+
+        <h2>What a CI/CD pipeline does</h2>
+        <ul>
+          <li><strong>Build</strong> — compile and package the application.</li>
+          <li><strong>Test</strong> — run automated unit, integration, and security checks.</li>
+          <li><strong>Release</strong> — deploy to staging and then production, often with automated rollback.</li>
+          <li><strong>Monitor</strong> — watch the release and alert on problems.</li>
+        </ul>
+
+        <h2>Why it matters</h2>
+        <p>Good CI/CD means <strong>faster releases</strong>, <strong>fewer bugs reaching users</strong>, and <strong>quicker recovery</strong> when something breaks. It's a core part of <a href="/insights/what-is-devops">DevOps</a> and one of the fastest ways to make an engineering team more productive.</p>
+      </div>
+
+      <div class="fx-inline-cta">
+        <p>Want CI/CD set up properly?<span>We build pipelines, cloud, and reliable delivery — as a team or a project.</span></p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="/solutions/devops-for-saas" class="fx-btn fx-btn--ghost"><span>DevOps for startups</span></a>
+          <a href="/contact" class="fx-btn fx-btn--primary"><span>Let's have a call</span></a>
+        </div>
+      </div>
+
+      <div class="fx-prose" style="margin-top:44px">
+        <h2>FAQ</h2>
+        {faqs.map((f, i) => (
+          <details class="fx-faq" open={i === 0}>
+            <summary><span>{f.q}</span><span class="plus" aria-hidden="true"></span></summary>
+            <div class="ans">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </article>
+
+  <RelatedGuides current="/insights/what-is-ci-cd" />
+</SiteClean>

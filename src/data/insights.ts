@@ -57,6 +57,24 @@ export const guides: Guide[] = [
       "DevOps explained in plain terms: what it is, the core practices (CI/CD, IaC, monitoring), the business benefits, and when your team needs it.",
     published: "2026-07-16",
   },
+  {
+    href: "/insights/what-is-ci-cd",
+    tag: "Glossary",
+    heading: "What is CI/CD?",
+    blurb: "Continuous integration and delivery explained — how a pipeline works and why it matters.",
+    description:
+      "CI/CD explained simply: what continuous integration and delivery mean, how a pipeline works, the benefits, and the common tools.",
+    published: "2026-07-16",
+  },
+  {
+    href: "/insights/ai-agents-for-business",
+    tag: "How-to",
+    heading: "AI agents for business: a practical guide",
+    blurb: "Where AI agents add real value, how they differ from chatbots, what they cost, and how to roll one out.",
+    description:
+      "What AI agents are, where they add real value in a business, what they cost, and how to roll one out without the hype.",
+    published: "2026-07-16",
+  },
 ];
 
 /** Return up to `limit` guides other than `currentHref` (for internal linking). */

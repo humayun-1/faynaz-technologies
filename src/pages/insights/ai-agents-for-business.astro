@@ -1,0 +1,91 @@
+---
+import SiteClean from "../../components/SiteClean.astro";
+import RelatedGuides from "../../components/fx/RelatedGuides.astro";
+import { site } from "../../data/site";
+
+const title = "AI Agents for Business: A Practical 2026 Guide";
+const description =
+  "What AI agents are, where they add real value in a business, what they cost, and how to roll one out without the hype — a practical 2026 guide.";
+const published = "2026-07-16";
+const path = "/insights/ai-agents-for-business";
+
+const faqs = [
+  { q: "What is an AI agent?", a: "An AI agent is software that uses a language model to understand a request, decide what to do, and take actions — such as looking up data, filling a form, or replying to a customer — often across several steps, with limited human oversight." },
+  { q: "How is an AI agent different from a chatbot?", a: "A chatbot mostly answers questions. An agent goes further: it takes actions in your systems (updating records, triggering workflows, calling APIs) to actually complete a task, not just talk about it." },
+  { q: "How much does it cost to build an AI agent?", a: "A focused business AI agent typically costs between about US$15,000 and US$60,000 to build, depending on the number of integrations and how much accuracy and oversight it needs. See our AI automation cost guide for detail." },
+];
+
+const breadcrumb = {
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+    { "@type": "ListItem", position: 2, name: "Insights", item: `${site.url}/insights` },
+    { "@type": "ListItem", position: 3, name: "AI agents for business", item: `${site.url}${path}` },
+  ],
+};
+const article = {
+  "@type": "Article", headline: "AI agents for business: a practical guide", description, datePublished: published, dateModified: published,
+  author: { "@id": `${site.url}/#organization` }, publisher: { "@id": `${site.url}/#organization` },
+  mainEntityOfPage: `${site.url}${path}`, inLanguage: "en",
+};
+const faqSchema = { "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+---
+
+<SiteClean title={title} description={description} canonical={path} schema={[breadcrumb, article, faqSchema]}>
+  <article class="fx-section fx-section--plain" style="padding-top:clamp(36px,5vw,64px)">
+    <div class="fx-wrap fx-guide">
+      <nav class="fx-crumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/insights">Insights</a><span class="sep">/</span><span>AI agents for business</span></nav>
+      <p class="fx-eyebrow">Guide</p>
+      <h1 style="font-size:clamp(2rem,4.4vw,3rem);font-weight:660;letter-spacing:-.035em;line-height:1.06">AI agents for business: a practical guide</h1>
+
+      <div class="fx-answer" style="margin-top:28px">
+        <div class="lbl">Short answer</div>
+        <p>An <strong>AI agent</strong> is software that uses a language model to understand a request, <strong>decide what to do, and take action</strong> across your systems — not just chat. Used well, agents remove repetitive knowledge work: triaging support, processing documents, updating records, and answering internal questions. The trick is to start narrow, keep a human in the loop, and measure the time saved.</p>
+      </div>
+
+      <div class="fx-prose">
+        <h2>Where AI agents add real value</h2>
+        <ul>
+          <li><strong>Customer support</strong> — triage tickets, draft replies, and resolve common requests end to end.</li>
+          <li><strong>Operations</strong> — read documents, extract data, and update your systems automatically.</li>
+          <li><strong>Internal knowledge</strong> — answer staff questions from your own docs and data (a private assistant).</li>
+          <li><strong>Sales &amp; research</strong> — gather, summarise, and enrich information at scale.</li>
+        </ul>
+
+        <h2>Agent vs chatbot vs automation</h2>
+        <p>A <strong>chatbot</strong> talks. Traditional <strong>automation</strong> follows fixed rules. An <strong>agent</strong> sits in between and beyond: it reasons about a goal and takes multi-step actions, which makes it powerful for messy, judgement-based tasks — but it needs guardrails.</p>
+
+        <h2>How to roll one out safely</h2>
+        <ul>
+          <li><strong>Start narrow</strong> — one high-volume, well-defined task, not a do-everything assistant.</li>
+          <li><strong>Keep a human in the loop</strong> at first, then widen autonomy as accuracy proves out.</li>
+          <li><strong>Measure</strong> hours saved and error rates so the value is clear.</li>
+          <li><strong>Mind data and access</strong> — least-privilege access and clear audit trails.</li>
+        </ul>
+
+        <h2>What it costs</h2>
+        <p>A focused business agent usually costs <strong>US$15,000–US$60,000+</strong> to build, driven by integrations and accuracy needs. See our <a href="/insights/ai-automation-cost">AI automation cost guide</a> for a fuller breakdown.</p>
+      </div>
+
+      <div class="fx-inline-cta">
+        <p>Thinking about an AI agent?<span>We build practical AI features that do real work — as a team or a project.</span></p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="/solutions/ai-automation-for-saas" class="fx-btn fx-btn--ghost"><span>AI automation</span></a>
+          <a href="/contact" class="fx-btn fx-btn--primary"><span>Let's have a call</span></a>
+        </div>
+      </div>
+
+      <div class="fx-prose" style="margin-top:44px">
+        <h2>FAQ</h2>
+        {faqs.map((f, i) => (
+          <details class="fx-faq" open={i === 0}>
+            <summary><span>{f.q}</span><span class="plus" aria-hidden="true"></span></summary>
+            <div class="ans">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </article>
+
+  <RelatedGuides current="/insights/ai-agents-for-business" />
+</SiteClean>

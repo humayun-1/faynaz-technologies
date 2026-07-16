@@ -182,14 +182,23 @@ const faqSchema = {
           <div class="fx-est-step">
             <div class="fx-est-q"><span class="qn">01</span><span data-i18n="est_q1">What are you building?</span></div>
             <div class="fx-opts" data-group="type" data-mode="single">
-              <button class="fx-opt" type="button" aria-pressed="true" data-cost="12000"><span data-i18n="t_web">Website</span></button>
-              <button class="fx-opt" type="button" aria-pressed="false" data-cost="24000"><span data-i18n="t_app">Web app</span></button>
-              <button class="fx-opt" type="button" aria-pressed="false" data-cost="30000"><span data-i18n="t_mobile">Mobile app</span></button>
-              <button class="fx-opt" type="button" aria-pressed="false" data-cost="20000"><span data-i18n="t_ai">AI / automation</span></button>
+              <button class="fx-opt" type="button" aria-pressed="true" data-cost="10000"><span data-i18n="t_web">Website</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="22000"><span data-i18n="t_app">Web app</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="28000"><span data-i18n="t_mobile">Mobile app</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="40000"><span data-i18n="t_saas">SaaS platform</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="18000"><span data-i18n="t_ai">AI / automation</span></button>
             </div>
           </div>
           <div class="fx-est-step">
-            <div class="fx-est-q"><span class="qn">02</span><span data-i18n="est_q2">Which platforms?</span></div>
+            <div class="fx-est-q"><span class="qn">02</span><span data-i18n="est_q2">Project scale</span></div>
+            <div class="fx-opts" data-group="scale" data-mode="single">
+              <button class="fx-opt" type="button" aria-pressed="false" data-mult="0.8"><span data-i18n="sc_mvp">MVP / prototype</span></button>
+              <button class="fx-opt" type="button" aria-pressed="true" data-mult="1"><span data-i18n="sc_growth">Growth stage</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-mult="1.45"><span data-i18n="sc_ent">Enterprise-grade</span></button>
+            </div>
+          </div>
+          <div class="fx-est-step">
+            <div class="fx-est-q"><span class="qn">03</span><span data-i18n="est_q3">Which platforms?</span></div>
             <div class="fx-opts" data-group="platform" data-mode="multi">
               <button class="fx-opt" type="button" aria-pressed="true" data-cost="0"><span class="tick">✓</span><span data-i18n="p_web">Web</span></button>
               <button class="fx-opt" type="button" aria-pressed="false" data-cost="9000"><span class="tick">✓</span><span data-i18n="p_ios">iOS</span></button>
@@ -197,7 +206,7 @@ const faqSchema = {
             </div>
           </div>
           <div class="fx-est-step">
-            <div class="fx-est-q"><span class="qn">03</span><span data-i18n="est_q3">Key features</span></div>
+            <div class="fx-est-q"><span class="qn">04</span><span data-i18n="est_q4">Key features</span></div>
             <div class="fx-opts" data-group="features" data-mode="multi">
               <button class="fx-opt" type="button" aria-pressed="false" data-cost="4000"><span class="tick">✓</span><span data-i18n="f_auth">User accounts</span></button>
               <button class="fx-opt" type="button" aria-pressed="false" data-cost="7000"><span class="tick">✓</span><span data-i18n="f_pay">Payments</span></button>
@@ -205,13 +214,32 @@ const faqSchema = {
               <button class="fx-opt" type="button" aria-pressed="false" data-cost="6500"><span class="tick">✓</span><span data-i18n="f_api">Integrations / API</span></button>
               <button class="fx-opt" type="button" aria-pressed="false" data-cost="9000"><span class="tick">✓</span><span data-i18n="f_ai">AI features</span></button>
               <button class="fx-opt" type="button" aria-pressed="false" data-cost="4500"><span class="tick">✓</span><span data-i18n="f_cms">CMS / content</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="6000"><span class="tick">✓</span><span data-i18n="f_rt">Real-time / chat</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="3000"><span class="tick">✓</span><span data-i18n="f_notif">Notifications</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="4000"><span class="tick">✓</span><span data-i18n="f_analytics">Analytics</span></button>
             </div>
           </div>
           <div class="fx-est-step">
-            <div class="fx-est-q"><span class="qn">04</span><span data-i18n="est_q4">Timeline</span></div>
+            <div class="fx-est-q"><span class="qn">05</span><span data-i18n="est_q5">Enterprise add-ons</span></div>
+            <div class="fx-opts" data-group="addons" data-mode="multi">
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="8000"><span class="tick">✓</span><span data-i18n="a_design">New UI/UX design</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="10000"><span class="tick">✓</span><span data-i18n="a_compliance">Security &amp; compliance (SOC 2 / HIPAA)</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="9000"><span class="tick">✓</span><span data-i18n="a_multitenant">Multi-tenant architecture</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-cost="7000"><span class="tick">✓</span><span data-i18n="a_devops">Cloud &amp; DevOps setup</span></button>
+            </div>
+          </div>
+          <div class="fx-est-step">
+            <div class="fx-est-q"><span class="qn">06</span><span data-i18n="est_q6">Timeline</span></div>
             <div class="fx-opts" data-group="timeline" data-mode="single">
               <button class="fx-opt" type="button" aria-pressed="true" data-mult="1"><span data-i18n="tl_std">Standard</span></button>
               <button class="fx-opt" type="button" aria-pressed="false" data-mult="1.25"><span data-i18n="tl_fast">Fast-track</span></button>
+            </div>
+          </div>
+          <div class="fx-est-step">
+            <div class="fx-est-q"><span class="qn">07</span><span data-i18n="est_q7">Ongoing support?</span></div>
+            <div class="fx-opts" data-group="support" data-mode="single">
+              <button class="fx-opt" type="button" aria-pressed="true" data-support="0"><span data-i18n="su_no">Not now</span></button>
+              <button class="fx-opt" type="button" aria-pressed="false" data-support="1"><span data-i18n="su_yes">Care plan</span></button>
             </div>
           </div>
         </div>
@@ -221,8 +249,9 @@ const faqSchema = {
           <div class="rrow"><span data-i18n="est_hours">Engineering hours</span><b id="fx-est-hours">0</b></div>
           <div class="rrow"><span data-i18n="est_weeks">Delivery window</span><b><span id="fx-est-weeks">0</span> <span data-i18n="est_wk">weeks</span></b></div>
           <div class="rrow"><span data-i18n="est_team">Team size</span><b id="fx-est-team">0</b></div>
+          <div class="rrow" id="fx-est-care-row" style="display:none"><span data-i18n="est_care">Ongoing care</span><b><span class="cur">$</span><span id="fx-est-care">0</span> <span data-i18n="est_mo">/mo</span></b></div>
           <a href="/contact" class="fx-btn fx-btn--primary"><span data-i18n="est_book">Let's have a call to refine it</span></a>
-          <div class="note" data-i18n="est_note">Indicative only. Final scope is fixed after discovery.</div>
+          <div class="note" data-i18n="est_note">Indicative range. Book a call for a fixed, itemized quote.</div>
         </aside>
       </div>
     </div>
