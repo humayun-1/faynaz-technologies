@@ -340,8 +340,8 @@ body.fx-loading { overflow: hidden; }
   .fx-burger { display: inline-flex; }
   .fx-nav-right .fx-cta-call-label { display: none; }
   .fx-foot-top { grid-template-columns: 1fr 1fr; gap: 30px; }
-  .fx-mobile-nav { display: block; border-top: 1px solid var(--line); background: var(--ground); }
-  .fx-mobile-nav.open { padding: 12px 0 18px; }
+  .fx-mobile-nav { display: block; background: var(--ground); overflow: hidden; max-height: 0; transition: max-height .3s ease; }
+  .fx-mobile-nav.open { max-height: 70vh; border-top: 1px solid var(--line); padding: 8px 0 16px; }
   .fx-mobile-nav a { display: block; padding: 12px 24px; font-weight: 550; color: var(--ink-soft); }
 }
 @media (max-width: 560px) {
