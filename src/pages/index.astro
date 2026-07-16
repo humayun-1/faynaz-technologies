@@ -179,6 +179,11 @@ const faqSchema = {
       </div>
       <div class="fx-est-grid">
         <div class="fx-est-panel fx-reveal">
+          <div class="fx-est-head">
+            <div class="fx-est-progress"><i id="fx-est-bar"></i></div>
+            <div class="fx-est-count"><span id="fx-est-cur">1</span> / <span id="fx-est-total">7</span></div>
+          </div>
+          <div class="fx-est-steps" id="fx-est-steps">
           <div class="fx-est-step">
             <div class="fx-est-q"><span class="qn">01</span><span data-i18n="est_q1">What are you building?</span></div>
             <div class="fx-opts" data-group="type" data-mode="single">
@@ -241,6 +246,11 @@ const faqSchema = {
               <button class="fx-opt" type="button" aria-pressed="true" data-support="0"><span data-i18n="su_no">Not now</span></button>
               <button class="fx-opt" type="button" aria-pressed="false" data-support="1"><span data-i18n="su_yes">Care plan</span></button>
             </div>
+          </div>
+          </div>
+          <div class="fx-est-nav">
+            <button class="fx-btn fx-btn--ghost" id="fx-est-back" type="button" disabled><span aria-hidden="true">←</span> <span data-i18n="est_back_btn">Back</span></button>
+            <button class="fx-btn fx-btn--primary" id="fx-est-next" type="button"><span class="lbl" data-i18n="est_next_btn">Next</span> <span aria-hidden="true">→</span></button>
           </div>
         </div>
         <aside class="fx-readout" aria-live="polite">

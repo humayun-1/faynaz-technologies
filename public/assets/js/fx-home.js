@@ -39,7 +39,7 @@
     a_design: "تصميم واجهة جديد", a_compliance: "أمن وامتثال (SOC 2 / HIPAA)", a_multitenant: "بنية متعددة المستأجرين", a_devops: "إعداد سحابة وDevOps",
     tl_std: "قياسي", tl_fast: "مسار سريع", su_no: "ليس الآن", su_yes: "خطة رعاية",
     est_rl: "الاستثمار التقديري", est_hours: "ساعات الهندسة", est_weeks: "مدّة التسليم", est_wk: "أسابيع", est_team: "حجم الفريق", est_care: "رعاية مستمرة", est_mo: "/شهر",
-    est_book: "لنتحدّث لتدقيق التقدير", est_note: "نطاق تقديري. احجز مكالمة لعرض سعر ثابت ومُفصّل.",
+    est_book: "لنتحدّث لتدقيق التقدير", est_note: "نطاق تقديري. احجز مكالمة لعرض سعر ثابت ومُفصّل.", est_back_btn: "رجوع", est_next_btn: "التالي",
     why_eyebrow: "لماذا تختارنا الفِرق", why_h2: "عمل احترافي دون احتكاك الوكالات.",
     why_p: "يجلس أصحاب التفكير في الغرفة نفسها مع كاتبي الكود.",
     why1_h: "سرعة يمكنك التخطيط حولها", why1_p: "فرق صغيرة خبيرة ونطاق محكم يعنيان إصدارًا أوّل خلال أسابيع بمواعيد نلتزم بها.",
@@ -173,6 +173,52 @@
     });
   });
   if (document.getElementById("fx-est-min")) calc();
+
+  /* ---------- estimator stepper (one question at a time) ---------- */
+  (function () {
+    var wrap = document.getElementById("fx-est-steps");
+    if (!wrap) return;
+    var steps = Array.prototype.slice.call(wrap.querySelectorAll(".fx-est-step"));
+    if (!steps.length) return;
+    var total = steps.length, idx = 0;
+    var bar = document.getElementById("fx-est-bar"),
+      cur = document.getElementById("fx-est-cur"),
+      tot = document.getElementById("fx-est-total"),
+      back = document.getElementById("fx-est-back"),
+      next = document.getElementById("fx-est-next"),
+      readout = document.querySelector(".fx-readout");
+    if (tot) tot.textContent = total;
+
+    function render() {
+      steps.forEach(function (s, i) { s.classList.toggle("active", i === idx); });
+      if (bar) bar.style.width = ((idx + 1) / total) * 100 + "%";
+      if (cur) cur.textContent = idx + 1;
+      if (back) back.disabled = idx === 0;
+      var lbl = next && next.querySelector(".lbl");
+      if (lbl) lbl.textContent = idx === total - 1 ? (curLang === "ar" ? "شاهد التقدير" : "See estimate") : (curLang === "ar" ? "التالي" : "Next");
+    }
+    function go(n) {
+      idx = Math.max(0, Math.min(total - 1, n));
+      render();
+      steps[idx].scrollIntoView({ block: "nearest" });
+    }
+    if (back) back.addEventListener("click", function () { go(idx - 1); });
+    if (next) next.addEventListener("click", function () {
+      if (idx < total - 1) go(idx + 1);
+      else if (readout) readout.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+    });
+    // auto-advance on single-select (skip the last step)
+    steps.forEach(function (step, i) {
+      var single = step.querySelector('.fx-opts[data-mode="single"]');
+      if (single && i < total - 1) {
+        single.addEventListener("click", function (e) {
+          if (!e.target.closest(".fx-opt")) return;
+          setTimeout(function () { if (idx === i) go(i + 1); }, 260);
+        });
+      }
+    });
+    render();
+  })();
 
   /* ---------- scroll reveal ---------- */
   var reveals = document.querySelectorAll(".fx-reveal");
