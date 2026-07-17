@@ -420,3 +420,27 @@ body.fx-loading { overflow: hidden; }
 .fx-verify .ic { width: 18px; height: 18px; color: var(--accent); }
 .fx-verify .sep { width: 1px; height: 18px; background: var(--line-strong); }
 @media (max-width: 640px) { .fx-verify .sep { display: none; } }
+
+/* pricing tiers */
+.fx-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
+@media (max-width: 900px) { .fx-tiers { grid-template-columns: 1fr; } }
+.fx-tier { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; }
+.fx-tier.pop { border-color: var(--accent); box-shadow: var(--shadow-md); position: relative; }
+.fx-tier .pop-tag { position: absolute; top: -11px; inset-inline-start: 28px; background: var(--accent); color: #fff; font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; }
+.fx-tier .tname { font-size: .76rem; font-weight: 650; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.fx-tier h3 { font-size: 1.3rem; font-weight: 640; letter-spacing: -.02em; margin-bottom: 6px; }
+.fx-tier .price { font-size: 1.7rem; font-weight: 680; letter-spacing: -.03em; margin: 12px 0 0; font-variant-numeric: tabular-nums; }
+.fx-tier .price small { font-size: .8rem; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+.fx-tier .from { font-size: .76rem; color: var(--muted); margin-bottom: 2px; }
+.fx-tier .forwho { color: var(--ink-soft); font-size: .92rem; margin: 14px 0 18px; }
+.fx-tier ul { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 9px; }
+.fx-tier li { display: flex; gap: 9px; font-size: .9rem; align-items: flex-start; color: var(--ink-soft); }
+.fx-tier li svg { width: 16px; height: 16px; color: var(--accent); flex: none; margin-top: 3px; }
+.fx-tier .fx-btn { margin-top: auto; justify-content: center; }
+
+/* illustrative badge */
+.fx-illus { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; font-weight: 650; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); border: 1px dashed var(--line-strong); border-radius: 6px; padding: 3px 9px; }
+.fx-note-band { background: var(--surface); border: 1px dashed var(--line-strong); border-radius: 12px; padding: 14px 18px; font-size: .88rem; color: var(--ink-soft); }
+.fx-case-stat { font-size: clamp(2.4rem,6vw,3.4rem); font-weight: 700; letter-spacing: -.04em; color: var(--accent); line-height: 1; font-variant-numeric: tabular-nums; }
+.fx-case-meta { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 6px; font-size: .86rem; color: var(--muted); }
+.fx-case-meta b { color: var(--ink); font-weight: 600; }

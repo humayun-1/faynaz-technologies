@@ -7,7 +7,7 @@
   /* ---------- i18n (English is authored in the DOM; Arabic overrides here) ---------- */
   var AR = {
     loading: "نُجهّز تجربتك",
-    nav_services: "الخدمات", nav_hire: "وظّف مهندسين", nav_solutions: "الحلول", nav_insights: "مقالات", nav_about: "من نحن", nav_cta: "لنتحدّث",
+    nav_services: "الخدمات", nav_hire: "وظّف مهندسين", nav_solutions: "الحلول", nav_work: "أعمالنا", nav_insights: "مقالات", nav_about: "من نحن", nav_cta: "لنتحدّث",
     hero_eyebrow: "استوديو برمجيات وDevOps وأتمتة",
     hero_h1a: "برمجيات و", hero_h1b: "DevOps وأتمتة ذكاء اصطناعي", hero_h1c: " — نبنيها ونُشغّلها لك.",
     hero_lead: "وظّف مهندسي DevOps وذكاء اصطناعي وتطوير متكامل كبار — كفريق مخصّص أو كخدمة مُدارة. من الاستراتيجية إلى إصدار موثوق، بدون أعباء الوكالات.",
@@ -73,7 +73,7 @@
     foot_about: "استوديو برمجيات يبني تطوير متكامل وDevOps وأتمتة ذكاء اصطناعي للفِرق التي تريد إنجازًا متقنًا.",
     foot_addr: "أبراج بحيرات جميرا — دبي، الإمارات",
     foot_email_l: "البريد:", foot_phone_l: "الهاتف:",
-    foot_company: "الشركة", fl_about: "من نحن", fl_hire: "وظّف مهندسين", fl_solutions: "الحلول", fl_insights: "مقالات", fl_contact: "تواصل",
+    foot_company: "الشركة", fl_about: "من نحن", fl_work: "أعمالنا", fl_hire: "وظّف مهندسين", fl_solutions: "الحلول", fl_insights: "مقالات", fl_contact: "تواصل", fs_startups: "للشركات الناشئة",
     foot_services: "الخدمات", fs_full: "تطوير متكامل", fs_devops: "DevOps وسحابة", fs_ai: "أتمتة ذكاء", fs_hire: "وظّف مهندسين", fs_qa: "الجودة والإصدار", fs_solutions: "حلول حسب القطاع",
     foot_legal: "القانوني والموارد", fr_terms: "شروط الخدمة", fr_privacy: "سياسة الخصوصية", fr_est: "مُقدّر المشروع",
     foot_recognition: "تقديرات", foot_copy: "© 2026 فايناز تكنولوجيز. جميع الحقوق محفوظة.", lang_label: "English"

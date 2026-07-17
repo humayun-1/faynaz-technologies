@@ -1,0 +1,102 @@
+---
+import SiteClean from "../../components/SiteClean.astro";
+import { site } from "../../data/site";
+import { caseStudies, relatedCases } from "../../data/casestudies";
+
+export function getStaticPaths() {
+  return caseStudies.map((c) => ({ params: { slug: c.slug }, props: { study: c } }));
+}
+
+const { study } = Astro.props;
+const path = `/work/${study.slug}`;
+const title = study.title;
+const related = relatedCases(study.slug);
+
+const breadcrumb = {
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+    { "@type": "ListItem", position: 2, name: "Work", item: `${site.url}/work` },
+    { "@type": "ListItem", position: 3, name: study.title, item: `${site.url}${path}` },
+  ],
+};
+const creativeWork = {
+  "@type": "CreativeWork",
+  name: study.title,
+  headline: study.title,
+  description: study.summary,
+  about: study.sector,
+  creator: { "@id": `${site.url}/#organization` },
+  keywords: study.tech.join(", "),
+};
+---
+
+<SiteClean title={title} description={study.summary} canonical={path} schema={[breadcrumb, creativeWork]}>
+  <section class="fx-subhero">
+    <div class="fx-wrap">
+      <nav class="fx-crumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/work">Work</a><span class="sep">/</span><span>{study.sector}</span></nav>
+      <p class="fx-eyebrow">{study.sector} {study.illustrative && <span class="fx-illus" style="margin-inline-start:8px">Illustrative engagement</span>}</p>
+      <h1>{study.title}</h1>
+      <p class="fx-lead">{study.summary}</p>
+      <div class="fx-case-meta">
+        <span><b>Sector:</b> {study.sector}</span>
+        <span><b>Engagement:</b> {study.engagement}</span>
+        <span><b>Stack:</b> {study.tech.join(", ")}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="fx-section fx-section--plain" style="padding-top:clamp(40px,5vw,64px)">
+    <div class="fx-wrap fx-guide">
+      <div class="fx-prose">
+        <h2>The challenge</h2>
+        <p>{study.challenge}</p>
+        <h2>What we did</h2>
+        <ul>
+          {study.approach.map((a) => <li>{a}</li>)}
+        </ul>
+        <h2>The outcome</h2>
+        <p>{study.outcome}</p>
+      </div>
+
+      <div class="fx-inline-cta">
+        <p>Have a project like this?<span>Tell us the goal and we'll come back with a plan and a price.</span></p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="/#estimate" class="fx-btn fx-btn--ghost"><span>Estimate</span></a>
+          <a href="/contact" class="fx-btn fx-btn--primary"><span>Let's have a call</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fx-section fx-section--surface" aria-label="More work">
+    <div class="fx-wrap">
+      <div class="fx-head fx-reveal" style="margin-bottom:32px"><p class="fx-eyebrow">More work</p><h2 style="font-size:clamp(1.5rem,3vw,2rem)">Related case studies</h2></div>
+      <div class="fx-work-grid fx-reveal">
+        {related.map((c) => (
+          <a class="fx-work" href={`/work/${c.slug}`}>
+            <div class="sector">{c.sector}</div>
+            <div class="stat">{c.stat}</div>
+            <h3>{c.title}</h3>
+            <p>{c.summary}</p>
+            <div class="foot">{c.engagement} · <span style="color:var(--accent);font-weight:600">Read →</span></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="fx-section">
+    <div class="fx-wrap">
+      <div class="fx-cta fx-reveal">
+        <p class="fx-eyebrow">Start a project</p>
+        <h2>Let's build your next release.</h2>
+        <p>Tell us what you're building. We'll come back with an honest plan, a timeline, and a fixed price.</p>
+        <div class="fx-cta-actions">
+          <a href="/contact" class="fx-btn fx-btn--light"><span>Let's have a call</span> <span class="fx-arrow" aria-hidden="true">→</span></a>
+          <a href="/work" class="fx-btn fx-btn--outline-light"><span>All work</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</SiteClean>

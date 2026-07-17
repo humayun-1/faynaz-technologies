@@ -1,0 +1,200 @@
+---
+import SiteClean from "../components/SiteClean.astro";
+import { site } from "../data/site";
+
+const title = "Dedicated Development Team for Startups | Faynaz Tech";
+const description =
+  "Hire a dedicated development team for your startup — senior engineers, from MVP to scale. Flexible packages for fintech, SaaS, healthtech, and more.";
+
+const tiers = [
+  {
+    tag: "Validate",
+    name: "Launch",
+    price: "$12k",
+    unit: "fixed scope",
+    forwho: "Pre-seed & seed startups turning an idea into a working MVP.",
+    team: "1 senior full-stack engineer + a fractional lead",
+    features: ["MVP built in 6–8 weeks", "Core features, auth & payments", "Deployed to your cloud", "Clean handover — you own it all"],
+    cta: "Scope my MVP",
+    pop: false,
+  },
+  {
+    tag: "Build",
+    name: "Growth Team",
+    price: "$22k",
+    unit: "/ month",
+    forwho: "Funded startups building the real product and iterating fast.",
+    team: "2–3 senior engineers (full-stack + DevOps) + lead",
+    features: ["Rolling monthly delivery", "CI/CD, QA & releases built in", "Product iteration each sprint", "Scale the team up or down"],
+    cta: "Start building",
+    pop: true,
+  },
+  {
+    tag: "Scale",
+    name: "Scale Squad",
+    price: "Custom",
+    unit: "dedicated squad",
+    forwho: "Scaling startups that need a full, cross-functional team.",
+    team: "4–5 engineers: full-stack, DevOps, AI/ML, QA + lead",
+    features: ["Multiple workstreams at once", "Reliability & performance focus", "AI features & automation", "Senior lead owning delivery"],
+    cta: "Plan my squad",
+    pop: false,
+  },
+];
+
+const industries = [
+  { i: "Fintech", need: "Compliance, payments, security, uptime", team: "Full-stack + DevOps, security-first" },
+  { i: "SaaS", need: "Multi-tenant, dashboards, billing, onboarding", team: "Full-stack + DevOps" },
+  { i: "HealthTech", need: "Privacy/compliance, EHR integrations", team: "Full-stack + integrations" },
+  { i: "E-commerce", need: "Performance, integrations, peak-season scale", team: "Full-stack + cloud/DevOps" },
+  { i: "AI-first", need: "LLM integration, data pipelines, MLOps", team: "AI/ML + full-stack" },
+];
+
+const faqs = [
+  { q: "How fast can a startup team start?", a: "Usually within two weeks. We stay deliberately small and senior, so a team is available soon rather than a queue months out." },
+  { q: "Can we start with an MVP and scale the team later?", a: "Yes — most startups begin with the Launch package to validate, then move to a Growth Team once there's traction. You scale up or down monthly." },
+  { q: "Do we own the code and IP?", a: "Entirely. Repository, cloud accounts, and IP are yours from day one — we build on your accounts, so there's no lock-in." },
+  { q: "How is this different from hiring in-house?", a: "You get senior engineers shipping in weeks with no recruiting, no overhead, and full flexibility — instead of months of hiring for a full-time salary and benefits." },
+];
+
+const breadcrumb = {
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+    { "@type": "ListItem", position: 2, name: "For startups", item: `${site.url}/startups` },
+  ],
+};
+const serviceSchema = {
+  "@type": "Service",
+  name: "Dedicated development team for startups",
+  serviceType: "Startup software development team",
+  description,
+  provider: { "@id": `${site.url}/#organization` },
+  areaServed: site.areaServed,
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Startup team packages",
+    itemListElement: tiers.map((t) => ({
+      "@type": "Offer",
+      name: t.name,
+      description: `${t.forwho} ${t.team}.`,
+    })),
+  },
+};
+const faqSchema = { "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+---
+
+<SiteClean title={title} description={description} canonical="/startups" schema={[breadcrumb, serviceSchema, faqSchema]}>
+  <section class="fx-subhero">
+    <div class="fx-wrap">
+      <nav class="fx-crumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><span>For startups</span></nav>
+      <p class="fx-eyebrow">For startups</p>
+      <h1>A dedicated development team for your startup.</h1>
+      <p class="fx-lead">Senior engineers who ship — from a first MVP to a scaling product. No recruiting, no overhead, no junior bench. Start in weeks and scale the team as you grow.</p>
+      <div class="fx-subhero-actions">
+        <a href="/contact" class="fx-btn fx-btn--primary"><span>Let's have a call</span> <span class="fx-arrow" aria-hidden="true">→</span></a>
+        <a href="#packages" class="fx-btn fx-btn--ghost"><span>See packages</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- why startups -->
+  <section class="fx-section fx-section--plain" style="padding-top:clamp(40px,5vw,64px)">
+    <div class="fx-wrap">
+      <div class="fx-head fx-reveal">
+        <p class="fx-eyebrow">Why founders work with us</p>
+        <h2>Built for how startups actually move.</h2>
+      </div>
+      <div class="fx-cards fx-reveal">
+        <div class="fx-card"><h3>Ship in weeks, not quarters</h3><p>Small senior teams and tight scope get a working MVP live fast, so you can validate and raise.</p></div>
+        <div class="fx-card"><h3>Senior engineers only</h3><p>The people building your product have shipped real products before — no learning on your budget.</p></div>
+        <div class="fx-card"><h3>Flexible &amp; low-risk</h3><p>Scale the team up or down monthly. You own all the code and infrastructure from day one.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- packages -->
+  <section class="fx-section fx-section--surface" id="packages">
+    <div class="fx-wrap">
+      <div class="fx-head fx-reveal">
+        <p class="fx-eyebrow">Packages</p>
+        <h2>Pick the team that fits your stage.</h2>
+        <p>Straightforward packages that grow with you. Prices are indicative starting points — your exact quote comes after a short discovery.</p>
+      </div>
+      <div class="fx-tiers fx-reveal">
+        {tiers.map((t) => (
+          <div class={`fx-tier${t.pop ? " pop" : ""}`}>
+            {t.pop && <span class="pop-tag">Most popular</span>}
+            <span class="tname">{t.tag}</span>
+            <h3>{t.name}</h3>
+            <div class="from">from</div>
+            <div class="price">{t.price} <small>{t.unit}</small></div>
+            <p class="forwho">{t.forwho}</p>
+            <ul>
+              <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v16M2 10h16"/></svg><span><b>{t.team}</b></span></li>
+              {t.features.map((f) => (
+                <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-9"/></svg><span>{f}</span></li>
+              ))}
+            </ul>
+            <a href="/contact" class={`fx-btn ${t.pop ? "fx-btn--primary" : "fx-btn--ghost"}`}><span>{t.cta}</span></a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- industry needs -->
+  <section class="fx-section" id="industries">
+    <div class="fx-wrap">
+      <div class="fx-head fx-reveal">
+        <p class="fx-eyebrow">By industry</p>
+        <h2>What startups usually need first.</h2>
+        <p>The right team depends on your industry. Here's what we typically see each one need out of the gate — a useful starting point for scoping your build.</p>
+      </div>
+      <div class="fx-guide fx-reveal" style="max-width:none">
+        <div class="fx-prose">
+          <div class="fx-tablewrap">
+            <table>
+              <thead><tr><th>Industry</th><th>Typically needs first</th><th>Recommended team</th></tr></thead>
+              <tbody>
+                {industries.map((r) => (
+                  <tr><td><b>{r.i}</b></td><td>{r.need}</td><td>{r.team}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="fx-section fx-section--surface" id="faq">
+    <div class="fx-wrap fx-faq-grid">
+      <div class="fx-head fx-reveal" style="margin-bottom:0"><p class="fx-eyebrow">FAQ</p><h2>Startup teams, answered.</h2></div>
+      <div class="fx-reveal">
+        {faqs.map((f, i) => (
+          <details class="fx-faq" open={i === 0}>
+            <summary><span>{f.q}</span><span class="plus" aria-hidden="true"></span></summary>
+            <div class="ans">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="fx-section">
+    <div class="fx-wrap">
+      <div class="fx-cta fx-reveal">
+        <p class="fx-eyebrow">Start building</p>
+        <h2>Get a startup team that ships.</h2>
+        <p>Tell us your stage and what you're building. We'll recommend the right package, a start date, and a clear price.</p>
+        <div class="fx-cta-actions">
+          <a href="/contact" class="fx-btn fx-btn--light"><span>Let's have a call</span> <span class="fx-arrow" aria-hidden="true">→</span></a>
+          <a href="/#estimate" class="fx-btn fx-btn--outline-light"><span>Estimate your project</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</SiteClean>
