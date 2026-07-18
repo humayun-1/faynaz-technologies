@@ -9,19 +9,19 @@ const description =
 const services = [
   {
     name: "Full-stack development",
-    id: "full-stack",
+    href: "/services/full-stack-development",
     desc: "Web apps, SaaS platforms, MVPs, and APIs — built to convert, scale, and stay maintainable.",
     points: ["Web & SaaS platforms", "MVPs and product builds", "API & integration work", "Performance & Core Web Vitals"],
   },
   {
     name: "DevOps & cloud",
-    id: "devops",
+    href: "/services/devops",
     desc: "CI/CD, Kubernetes, cloud migration, and infrastructure as code for faster, more reliable releases.",
     points: ["CI/CD pipelines", "Kubernetes & containers", "Cloud migration (AWS/GCP/Azure)", "Infrastructure as code & reliability"],
   },
   {
     name: "AI automation",
-    id: "ai-automation",
+    href: "/services/ai-automation",
     desc: "Workflow automation, AI agents, and LLM integration that remove repetitive manual work.",
     points: ["Workflow & process automation", "AI agents & assistants", "LLM integration", "Business process automation"],
   },
@@ -72,13 +72,14 @@ const faqSchema = {
     <div class="fx-wrap">
       <div class="fx-cards fx-reveal">
         {services.map((s) => (
-          <div class="fx-card" id={s.id}>
+          <a class="fx-card" href={s.href}>
             <h3>{s.name}</h3>
             <p>{s.desc}</p>
             <ul class="fx-prose" style="margin-top:14px">
               {s.points.map((p) => <li>{p}</li>)}
             </ul>
-          </div>
+            <span class="more">Learn more <span aria-hidden="true">→</span></span>
+          </a>
         ))}
       </div>
     </div>
