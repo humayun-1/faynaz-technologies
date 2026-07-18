@@ -515,3 +515,22 @@ h3 { letter-spacing: -0.018em; }
 .fx-work .sector { display: inline-flex; align-self: flex-start; align-items: center; padding: 4px 11px; border: 1px solid var(--line-strong); border-radius: 20px; background: var(--surface); letter-spacing: .08em; }
 .fx-work .stat { margin-top: 2px; }
 [dir="rtl"] .fx-work::before { transform-origin: right; }
+
+/* ============================================================
+   Motion flourishes — GPU-only (transform/opacity), deferred JS,
+   fully disabled under prefers-reduced-motion (global rule below).
+   ============================================================ */
+/* cursor-follow spotlight on cards */
+.fx-card, .fx-tier, .fx-work { position: relative; }
+.fx-card::after, .fx-tier::after, .fx-work::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  opacity: 0; transition: opacity .35s ease;
+  background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 13%, transparent), transparent 60%);
+}
+.fx-card:hover::after, .fx-tier:hover::after, .fx-work:hover::after { opacity: 1; }
+/* smooth 3D tilt return for the hero console (JS sets the transform) */
+.fx-console { transition: transform .25s ease-out, box-shadow .22s ease; }
+/* ambient drift behind the hero visual */
+@keyframes fx-drift { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(3%, -4%, 0); } }
+.fx-hero-visual::before { animation: fx-drift 10s ease-in-out infinite; }
+.fx-hero-visual::after { animation: fx-drift 13s ease-in-out infinite reverse; }

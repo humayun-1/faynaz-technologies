@@ -232,6 +232,30 @@
     reveals.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---------- pointer flourishes (desktop, motion-safe; zero load cost) ---------- */
+  if (!reduce && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    // cursor-follow spotlight on cards
+    document.querySelectorAll(".fx-card, .fx-tier, .fx-work").forEach(function (el) {
+      el.addEventListener("mousemove", function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", (e.clientX - r.left) + "px");
+        el.style.setProperty("--my", (e.clientY - r.top) + "px");
+      });
+    });
+    // subtle 3D tilt on the hero console
+    var tiltWrap = document.querySelector(".fx-hero-visual");
+    var tiltEl = tiltWrap && tiltWrap.querySelector(".fx-console");
+    if (tiltEl) {
+      tiltWrap.addEventListener("mousemove", function (e) {
+        var r = tiltWrap.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        tiltEl.style.transform = "perspective(900px) rotateX(" + (-py * 5).toFixed(2) + "deg) rotateY(" + (px * 6).toFixed(2) + "deg)";
+      });
+      tiltWrap.addEventListener("mouseleave", function () { tiltEl.style.transform = ""; });
+    }
+  }
+
   /* ---------- preloader (wall-clock; never traps a backgrounded tab) ---------- */
   var pre = document.getElementById("fx-pre");
   var seen = false;
