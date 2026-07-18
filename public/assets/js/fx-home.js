@@ -75,7 +75,7 @@
     foot_email_l: "البريد:", foot_phone_l: "الهاتف:",
     foot_company: "الشركة", fl_about: "من نحن", fl_work: "أعمالنا", fl_hire: "وظّف مهندسين", fl_solutions: "الحلول", fl_insights: "مقالات", fl_contact: "تواصل", fs_startups: "للشركات الناشئة",
     foot_services: "الخدمات", fs_full: "تطوير متكامل", fs_devops: "DevOps وسحابة", fs_ai: "أتمتة ذكاء", fs_hire: "وظّف مهندسين", fs_qa: "الجودة والإصدار", fs_solutions: "حلول حسب القطاع",
-    foot_legal: "القانوني والموارد", fr_terms: "شروط الخدمة", fr_privacy: "سياسة الخصوصية", fr_est: "مُقدّر المشروع",
+    foot_legal: "القانوني والموارد", fr_faq: "الأسئلة الشائعة", fr_terms: "شروط الخدمة", fr_privacy: "سياسة الخصوصية", fr_est: "مُقدّر المشروع",
     foot_recognition: "تقديرات", foot_copy: "© 2026 فايناز تكنولوجيز. جميع الحقوق محفوظة.", lang_label: "English"
   };
 

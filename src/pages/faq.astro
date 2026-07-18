@@ -1,11 +1,91 @@
 ---
-import Layout from '../components/Layout.astro';
-import content from '../content/pages/faq.html?raw';
+import SiteClean from "../components/SiteClean.astro";
+import { site } from "../data/site";
 
-const title = "FAQ - Faynaz Technologies";
-const description = 'Faynaz Technologies crafts web development, AI, machine learning, and design solutions that help businesses grow.';
+const title = "FAQ — Working with Faynaz Technologies";
+const description =
+  "Answers to common questions about working with Faynaz Technologies — pricing, timelines, engagement models, code ownership, and support.";
+
+const groups = [
+  {
+    heading: "Working together",
+    faqs: [
+      { q: "How do you price engagements?", a: "Most projects are fixed-scope and fixed-price, agreed after a short discovery so there are no surprises. Dedicated engineers run on a simple monthly retainer." },
+      { q: "What engagement models do you offer?", a: "Two: a dedicated team of senior engineers who join your team on a retainer, or a managed service where we scope, build, and deliver a defined outcome at a fixed price." },
+      { q: "How quickly can you start?", a: "Typically within two weeks. We stay deliberately small and senior, so a team is available soon rather than a queue months out." },
+      { q: "Can we scale the team up or down?", a: "Yes. With a dedicated team you adjust the size month to month as your needs change." },
+    ],
+  },
+  {
+    heading: "Delivery & ownership",
+    faqs: [
+      { q: "Do we own the code and IP?", a: "Entirely. You own the repository, the infrastructure, and all IP from day one. We build on your accounts, so there is no lock-in." },
+      { q: "Who actually does the work?", a: "The senior engineers and lead you meet on the first call. Delivery is never handed to a separate junior team after signing." },
+      { q: "How do you handle quality and testing?", a: "QA and release discipline are built into every engagement — automated tests, code review, and pre-launch checks, so releases ship on schedule and hold up in production." },
+      { q: "What happens after launch?", a: "We monitor the release, fix anything that surfaces, and can stay on a support retainer — or hand over clean, documented code." },
+    ],
+  },
+  {
+    heading: "About Faynaz",
+    faqs: [
+      { q: "Where is your team based?", a: "We are based in Dubai, UAE, and work remotely with clients across the UK, Europe, Australia, Singapore, and the US. Dubai's timezone overlaps European mornings and Asian afternoons for real same-day collaboration." },
+      { q: "What do you build?", a: "Full-stack software (web apps, SaaS, MVPs, APIs), DevOps and cloud (CI/CD, Kubernetes, migration), and AI automation (workflow automation, AI agents, LLM integration)." },
+      { q: "Do you work with startups?", a: "Yes — from a first MVP to a scaling product. We have startup team packages built around each stage." },
+    ],
+  },
+];
+
+const allFaqs = groups.flatMap((g) => g.faqs);
+const breadcrumb = {
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+    { "@type": "ListItem", position: 2, name: "FAQ", item: `${site.url}/faq` },
+  ],
+};
+const faqSchema = {
+  "@type": "FAQPage",
+  mainEntity: allFaqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
 ---
 
-<Layout title={title} description={description} particles={true}>
-  <Fragment set:html={content} />
-</Layout>
+<SiteClean title={title} description={description} canonical="/faq" schema={[breadcrumb, faqSchema]}>
+  <section class="fx-subhero">
+    <div class="fx-wrap">
+      <nav class="fx-crumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">/</span><span>FAQ</span></nav>
+      <p class="fx-eyebrow">FAQ</p>
+      <h1>Questions, answered.</h1>
+      <p class="fx-lead">Everything you might want to know before working with us — pricing, timelines, ownership, and how we deliver. Still unsure? <a href="/contact" class="fx-textlink">Just ask →</a></p>
+    </div>
+  </section>
+
+  {groups.map((g, gi) => (
+    <section class={`fx-section${gi % 2 === 1 ? " fx-section--surface" : ""}${gi === 0 ? " fx-section--plain" : ""}`} style={gi === 0 ? "padding-top:clamp(40px,5vw,64px)" : undefined}>
+      <div class="fx-wrap fx-faq-grid">
+        <div class="fx-head fx-reveal" style="margin-bottom:0"><p class="fx-eyebrow">{g.heading}</p><h2>{g.heading}</h2></div>
+        <div class="fx-reveal">
+          {g.faqs.map((f, i) => (
+            <details class="fx-faq" open={i === 0}>
+              <summary><span>{f.q}</span><span class="plus" aria-hidden="true"></span></summary>
+              <div class="ans">{f.a}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="fx-section">
+    <div class="fx-wrap">
+      <div class="fx-cta fx-reveal">
+        <p class="fx-eyebrow">Still have questions?</p>
+        <h2>Let's talk it through.</h2>
+        <p>Book a short call and we'll answer anything specific to your project — honestly, no pushy sales.</p>
+        <div class="fx-cta-actions">
+          <a href="/contact" class="fx-btn fx-btn--light"><span>Let's have a call</span> <span class="fx-arrow" aria-hidden="true">→</span></a>
+          <a href="/#estimate" class="fx-btn fx-btn--outline-light"><span>Estimate your project</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</SiteClean>

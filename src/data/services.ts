@@ -80,6 +80,28 @@ export const servicePillars: ServicePillar[] = [
     ],
     description: "AI automation services from a Dubai studio — workflow automation, AI agents, and LLM integration that cut manual work. Book a call.",
   },
+  {
+    slug: "quality-assurance",
+    name: "QA & release",
+    h1: "QA & Software Testing Services",
+    keyword: "software testing services",
+    intro:
+      "We add QA and release discipline so your software ships on schedule and holds up in production — automated testing, manual QA, and release checks, as a dedicated hire or a fixed-scope engagement.",
+    deliverables: [
+      "Automated testing (unit, integration, end-to-end)",
+      "Manual & exploratory QA",
+      "CI/CD test integration",
+      "Release management & pre-launch checks",
+      "Bug triage & regression suites",
+    ],
+    tech: ["Playwright", "Cypress", "Jest", "Selenium", "GitHub Actions"],
+    faqs: [
+      { q: "Do you provide QA as a standalone service?", a: "Yes — we can run QA and release for an existing product, or embed QA engineers in your team, without you needing us for the full build." },
+      { q: "What kinds of testing do you do?", a: "Automated unit, integration, and end-to-end tests, plus manual and exploratory QA, wired into your CI/CD so every release is checked before it ships." },
+      { q: "Can you set up automated testing from scratch?", a: "Yes — we build the test suites, integrate them into your pipeline, and hand over documentation so your team can maintain them." },
+    ],
+    description: "QA & software testing services from a Dubai studio — automated testing, manual QA, and release discipline. Dedicated team or managed service.",
+  },
 ];
 
 export function otherServices(currentSlug: string) {

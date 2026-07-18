@@ -2,7 +2,12 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/hire-developer", "destination": "/hire", "permanent": true }
+    { "source": "/hire-developer", "destination": "/hire", "permanent": true },
+    { "source": "/blog", "destination": "/insights", "permanent": true },
+    { "source": "/blog-details", "destination": "/insights", "permanent": true },
+    { "source": "/portfolio", "destination": "/work", "permanent": true },
+    { "source": "/portfolio-details", "destination": "/work", "permanent": true },
+    { "source": "/service-details", "destination": "/service", "permanent": true }
   ],
   "headers": [
     {
