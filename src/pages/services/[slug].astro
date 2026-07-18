@@ -51,14 +51,26 @@ const faqSchema = {
   <section class="fx-section fx-section--plain" style="padding-top:clamp(40px,5vw,64px)">
     <div class="fx-wrap fx-guide">
       <div class="fx-prose">
+        <p>{svc.overview}</p>
+
         <h2>What's included</h2>
         <ul>
           {svc.deliverables.map((d) => <li>{d}</li>)}
         </ul>
+
+        <h2>Common use cases</h2>
+        <ul>
+          {svc.useCases.map((u) => <li>{u}</li>)}
+        </ul>
+
+        <h2>When you need {svc.name.toLowerCase()}</h2>
+        <p>{svc.whenToHire}</p>
+
         <h2>Technologies we use</h2>
         <div class="fx-chips">
           {svc.tech.map((t) => <span class="fx-chip">{t}</span>)}
         </div>
+
         <h2 style="margin-top:34px">How we work</h2>
         <ul>
           <li><strong>Discover</strong> — we map the goal and success metric before any code.</li>
