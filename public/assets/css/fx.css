@@ -7,8 +7,8 @@
   --ink: #171310;
   --ink-soft: #4a443f;
   --muted: #7c736b;
-  --line: #ece6df;
-  --line-strong: #ddd4ca;
+  --line: #e8e0d6;
+  --line-strong: #d4c9bc;
   --accent: #f2531f;
   --accent-ink: #c63e12;
   --accent-soft: #fff0e9;
@@ -17,23 +17,25 @@
   /* inverted (dark) panels — stay dark in BOTH themes */
   --invert-bg: #171310;
   --invert-border: rgba(255, 255, 255, 0.09);
-  --shadow-sm: 0 1px 2px rgba(23, 19, 16, 0.05);
-  --shadow-md: 0 1px 2px rgba(23, 19, 16, 0.05), 0 14px 34px -16px rgba(23, 19, 16, 0.18);
-  --shadow-lg: 0 2px 4px rgba(23, 19, 16, 0.06), 0 30px 60px -28px rgba(23, 19, 16, 0.3);
+  --ring: color-mix(in srgb, var(--accent) 55%, transparent);
+  --shadow-sm: 0 1px 1px rgba(23, 19, 16, .04), 0 2px 5px rgba(23, 19, 16, .05);
+  --shadow-md: 0 1px 2px rgba(23, 19, 16, .04), 0 6px 12px -4px rgba(23, 19, 16, .07), 0 16px 30px -12px rgba(23, 19, 16, .12);
+  --shadow-lg: 0 2px 4px rgba(23, 19, 16, .05), 0 12px 24px -8px rgba(23, 19, 16, .10), 0 36px 60px -24px rgba(23, 19, 16, .22);
   --radius: 14px;
   --radius-sm: 10px;
   --container: 1160px;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --sans: "Inter", "Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Consolas, monospace;
   --arab: "Segoe UI", "Noto Sans Arabic", "Geeza Pro", "Tahoma", var(--sans);
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --ground: #0e0c0b; --surface: #17130f; --ink: #f6f2ee; --ink-soft: #bcb4ab; --muted: #857b71;
-    --line: #26201a; --line-strong: #322a22; --accent: #ff7a45; --accent-ink: #ff9163; --accent-soft: #241611; --card: #16120e;
+    --line: #2a231c; --line-strong: #3a3128; --accent: #ff7a45; --accent-ink: #ff9163; --accent-soft: #241611; --card: #16120e;
     --invert-bg: #1f1912; --invert-border: rgba(255,255,255,.08);
-    --shadow-md: 0 1px 2px rgba(0,0,0,.4), 0 16px 36px -18px rgba(0,0,0,.7);
-    --shadow-lg: 0 2px 6px rgba(0,0,0,.5), 0 34px 64px -30px rgba(0,0,0,.85);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+    --shadow-md: 0 1px 2px rgba(0,0,0,.4), 0 8px 16px -6px rgba(0,0,0,.5), 0 20px 36px -18px rgba(0,0,0,.7);
+    --shadow-lg: 0 2px 6px rgba(0,0,0,.5), 0 16px 30px -12px rgba(0,0,0,.6), 0 40px 68px -30px rgba(0,0,0,.85);
   }
 }
 
@@ -444,3 +446,48 @@ body.fx-loading { overflow: hidden; }
 .fx-case-stat { font-size: clamp(2.4rem,6vw,3.4rem); font-weight: 700; letter-spacing: -.04em; color: var(--accent); line-height: 1; font-variant-numeric: tabular-nums; }
 .fx-case-meta { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 6px; font-size: .86rem; color: var(--muted); }
 .fx-case-meta b { color: var(--ink); font-weight: 600; }
+
+/* ============================================================
+   Premium refinement layer — typography, definition, micro-details
+   ============================================================ */
+body { -moz-osx-font-smoothing: grayscale; font-synthesis: none; letter-spacing: -0.011em; }
+::selection { background: color-mix(in srgb, var(--accent) 22%, transparent); color: var(--ink); }
+
+/* headings: tighter, more defined */
+h1, h2 { letter-spacing: -0.033em; }
+h3 { letter-spacing: -0.018em; }
+.fx-hero h1 { letter-spacing: -0.045em; }
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] .fx-hero h1 { letter-spacing: 0; }
+.fx-head h2 { font-weight: 660; }
+
+/* refined focus ring */
+:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; border-radius: 8px; }
+
+/* eyebrow: short accent lead-line for definition (section + subhero heads) */
+.fx-head > .fx-eyebrow, .fx-subhero > .fx-eyebrow { display: inline-flex; align-items: center; gap: 11px; }
+.fx-head > .fx-eyebrow::before, .fx-subhero > .fx-eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--accent); border-radius: 2px; flex: none; }
+
+/* buttons: tighter, defined, with press + refined hover */
+.fx-btn { font-weight: 600; letter-spacing: -0.01em; border-radius: 11px; transition: transform .16s cubic-bezier(.2,.7,.2,1), background .16s ease, border-color .16s ease, box-shadow .16s ease; }
+.fx-btn--primary { box-shadow: 0 1px 2px rgba(23,19,16,.12), inset 0 1px 0 rgba(255,255,255,.15); }
+.fx-btn--primary:hover { box-shadow: 0 5px 16px -4px color-mix(in srgb, var(--accent) 55%, transparent); }
+.fx-btn--ghost { border-color: var(--line-strong); box-shadow: var(--shadow-sm); }
+.fx-btn:active { transform: scale(.98); }
+
+/* cards & surfaces: more defined edge + refined lift */
+.fx-card, .fx-work, .fx-quote, .fx-tier, .fx-est-panel, .fx-console { border-color: var(--line-strong); }
+.fx-card { transition: transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s ease, border-color .22s ease; }
+.fx-card:hover, .fx-work:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: color-mix(in srgb, var(--accent) 42%, var(--line-strong)); }
+
+/* nav links: animated underline */
+.fx-nav-links a { position: relative; }
+.fx-nav-links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -7px; height: 2px; background: var(--accent); border-radius: 2px; transform: scaleX(0); transform-origin: left; transition: transform .22s cubic-bezier(.2,.7,.2,1); }
+.fx-nav-links a:hover::after { transform: scaleX(1); }
+
+/* header: refined blur + hairline */
+.fx-header { backdrop-filter: saturate(1.5) blur(12px); -webkit-backdrop-filter: saturate(1.5) blur(12px); }
+
+/* inputs & option chips: defined focus / press */
+.fx-opt { transition: transform .15s ease, background .15s ease, border-color .15s ease; }
+.fx-opt:active { transform: scale(.97); }
+.fx-input:focus, .fx-textarea:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent); }
