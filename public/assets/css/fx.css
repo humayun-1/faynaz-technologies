@@ -491,3 +491,27 @@ h3 { letter-spacing: -0.018em; }
 .fx-opt { transition: transform .15s ease, background .15s ease, border-color .15s ease; }
 .fx-opt:active { transform: scale(.97); }
 .fx-input:focus, .fx-textarea:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent); }
+
+/* ---- hero polish ---- */
+.fx-hero-trust { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.fx-hero-trust li { display: inline-flex; align-items: center; gap: 8px; font-size: .9rem; color: var(--ink-soft); font-weight: 500; }
+.fx-hero-trust li::before { content: "✓"; color: var(--accent); font-weight: 800; font-size: .82rem; }
+.fx-hero-visual::before { background: color-mix(in srgb, var(--accent) 13%, transparent); filter: blur(28px); inset: auto -6% -8% 14%; height: 72%; }
+.fx-hero-visual::after { content: ""; position: absolute; inset: -18% 8% auto -12%; height: 46%; background: color-mix(in srgb, var(--accent) 7%, transparent); filter: blur(40px); border-radius: 50%; z-index: 0; }
+
+/* ---- pricing tiers polish ---- */
+.fx-tier { transition: transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s ease, border-color .22s ease; }
+.fx-tier:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.fx-tier.pop { background: color-mix(in srgb, var(--accent-soft) 55%, var(--card)); box-shadow: var(--shadow-lg); }
+.fx-tier ul { border-top: 1px solid var(--line); padding-top: 20px; margin-top: 4px; }
+.fx-tier li svg { color: var(--accent); }
+.fx-tier .price small { display: inline-block; margin-inline-start: 2px; }
+
+/* ---- case-study cards polish ---- */
+.fx-work { position: relative; overflow: hidden; transition: transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s ease, border-color .22s ease; }
+.fx-work::before { content: ""; position: absolute; top: 0; inset-inline: 0; height: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .28s cubic-bezier(.2,.7,.2,1); }
+.fx-work:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: color-mix(in srgb, var(--accent) 40%, var(--line-strong)); }
+.fx-work:hover::before { transform: scaleX(1); }
+.fx-work .sector { display: inline-flex; align-self: flex-start; align-items: center; padding: 4px 11px; border: 1px solid var(--line-strong); border-radius: 20px; background: var(--surface); letter-spacing: .08em; }
+.fx-work .stat { margin-top: 2px; }
+[dir="rtl"] .fx-work::before { transform-origin: right; }
