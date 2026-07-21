@@ -29,6 +29,11 @@ const wa = "https://wa.me/" + site.phone.replace(/[^0-9]/g, "");
       var d = document.documentElement;
       d.classList.add("js");
       setTimeout(function () { d.classList.add("fx-ready"); }, 2800);
+      // hard failsafe: the loader can never stay stuck, even if a script errors
+      setTimeout(function () {
+        var p = document.getElementById("fx-pre");
+        if (p) { p.classList.add("done"); setTimeout(function () { p.style.display = "none"; }, 900); }
+      }, 3200);
     </script>
     <SeoHead
       title={title}

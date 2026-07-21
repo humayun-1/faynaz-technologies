@@ -277,13 +277,14 @@
       revealHero(); // hero entrance plays as the curtain lifts
       setTimeout(function () { pre.style.display = "none"; }, 900);
     };
-    var step = function () {
+    // timer-based (setInterval keeps running even when rAF is throttled in a
+    // background/unfocused tab, so the counter can never freeze at 0)
+    var timer = setInterval(function () {
       var p = Math.min(1, (Date.now() - startTime) / dur);
       var val = Math.round((1 - Math.pow(1 - p, 2)) * 100);
       if (num) num.textContent = val; if (fill) fill.style.width = val + "%";
-      if (p < 1) requestAnimationFrame(step); else setTimeout(finish, 180);
-    };
-    requestAnimationFrame(step);
-    setTimeout(finish, dur + 1400);
+      if (p >= 1) { clearInterval(timer); setTimeout(finish, 150); }
+    }, 40);
+    setTimeout(finish, dur + 1200); // hard safety net
   }
 })();
