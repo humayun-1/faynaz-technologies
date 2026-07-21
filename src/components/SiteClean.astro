@@ -23,6 +23,13 @@ const wa = "https://wa.me/" + site.phoneUae.replace(/[^0-9]/g, "");
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      /* mark JS-capable (enables the hero entrance) + failsafe reveal so the
+         hero can never stay hidden even if a later script fails */
+      var d = document.documentElement;
+      d.classList.add("js");
+      setTimeout(function () { d.classList.add("fx-ready"); }, 2800);
+    </script>
     <SeoHead
       title={title}
       description={description}

@@ -260,10 +260,12 @@
   var pre = document.getElementById("fx-pre");
   var seen = false;
   try { seen = sessionStorage.getItem("fx-preloaded") === "1"; } catch (e) {}
-  if (pre && seen) {
+  var revealHero = function () { document.documentElement.classList.add("fx-ready"); };
+  if (!pre || seen) {
     // Already shown this session — don't tax every page load (protects LCP).
-    pre.style.display = "none";
-  } else if (pre) {
+    if (pre) pre.style.display = "none";
+    revealHero();
+  } else {
     try { sessionStorage.setItem("fx-preloaded", "1"); } catch (e) {}
     var num = document.getElementById("fx-pl-num"), fill = document.getElementById("fx-pl-fill");
     document.body.classList.add("fx-loading");
@@ -272,6 +274,7 @@
       if (done) return; done = true;
       if (num) num.textContent = 100; if (fill) fill.style.width = "100%";
       pre.classList.add("done"); document.body.classList.remove("fx-loading");
+      revealHero(); // hero entrance plays as the curtain lifts
       setTimeout(function () { pre.style.display = "none"; }, 900);
     };
     var step = function () {

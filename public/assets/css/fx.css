@@ -313,13 +313,21 @@ body.fx-loading { overflow: hidden; }
 .fx-cards .fx-card.fx-reveal:nth-child(2), .fx-work-grid .fx-work.fx-reveal:nth-child(2) { transition-delay: .08s; }
 .fx-cards .fx-card.fx-reveal:nth-child(3), .fx-work-grid .fx-work.fx-reveal:nth-child(3) { transition-delay: .16s; }
 .fx-cards .fx-card.fx-reveal:nth-child(4) { transition-delay: .24s; }
-.fx-hero-copy > * { animation: fx-fadeup .6s cubic-bezier(.2,.7,.2,1) both; }
-.fx-hero-copy > *:nth-child(1) { animation-delay: .04s; }
-.fx-hero-copy > *:nth-child(2) { animation-delay: .10s; }
-.fx-hero-copy > *:nth-child(3) { animation-delay: .16s; }
-.fx-hero-copy > *:nth-child(4) { animation-delay: .22s; }
-.fx-hero-copy > *:nth-child(5) { animation-delay: .28s; }
+/* signature hero entrance — holds hidden until .fx-ready (set after the preloader lifts) */
+html.js .fx-hero-copy > * { opacity: 0; }
+html.js.fx-ready .fx-hero-copy > * { animation: fx-fadeup .62s cubic-bezier(.2,.7,.2,1) both; }
+html.js.fx-ready .fx-hero-copy > *:nth-child(1) { animation-delay: .04s; }
+html.js.fx-ready .fx-hero-copy > *:nth-child(2) { animation-delay: .12s; }
+html.js.fx-ready .fx-hero-copy > *:nth-child(3) { animation-delay: .22s; }
+html.js.fx-ready .fx-hero-copy > *:nth-child(4) { animation-delay: .30s; }
+html.js.fx-ready .fx-hero-copy > *:nth-child(5) { animation-delay: .37s; }
+html.js.fx-ready .fx-hero-copy > *:nth-child(6) { animation-delay: .43s; }
+html.js.fx-ready .fx-hero-copy > h1 { animation: fx-hero-reveal .9s cubic-bezier(.2,.7,.2,1) both !important; animation-delay: .1s !important; }
 @keyframes fx-fadeup { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes fx-hero-reveal { from { opacity: 0; clip-path: inset(0 0 108% 0); transform: translateY(6px); } to { opacity: 1; clip-path: inset(0 0 -14% 0); transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  html.js .fx-hero-copy > * { opacity: 1 !important; animation: none !important; clip-path: none !important; transform: none !important; }
+}
 .fx-step.active .ck { animation: fx-pulse 1.8s ease-in-out infinite; }
 @keyframes fx-pulse { 0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent); } 50% { box-shadow: 0 0 0 6px transparent; } }
 @media (prefers-reduced-motion: reduce) {
