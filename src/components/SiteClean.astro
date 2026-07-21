@@ -23,18 +23,6 @@ const wa = "https://wa.me/" + site.phone.replace(/[^0-9]/g, "");
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script is:inline>
-      /* mark JS-capable (enables the hero entrance) + failsafe reveal so the
-         hero can never stay hidden even if a later script fails */
-      var d = document.documentElement;
-      d.classList.add("js");
-      setTimeout(function () { d.classList.add("fx-ready"); }, 2800);
-      // hard failsafe: the loader can never stay stuck, even if a script errors
-      setTimeout(function () {
-        var p = document.getElementById("fx-pre");
-        if (p) { p.classList.add("done"); setTimeout(function () { p.style.display = "none"; }, 900); }
-      }, 3200);
-    </script>
     <SeoHead
       title={title}
       description={description}
@@ -51,17 +39,6 @@ const wa = "https://wa.me/" + site.phone.replace(/[^0-9]/g, "");
     <link rel="stylesheet" href="/assets/css/fx.css" />
   </head>
   <body>
-    <!-- preloader -->
-    <div id="fx-pre" aria-hidden="true">
-      <div class="pl-top">
-        <img class="fx-logo" src={site.logo} width="30" height="30" alt="" />
-        <span>Faynaz Technologies</span>
-      </div>
-      <div class="pl-count"><span id="fx-pl-num">0</span><small>%</small></div>
-      <div class="pl-track"><div class="pl-fill" id="fx-pl-fill"></div></div>
-      <div class="pl-word" data-i18n="loading">Building your experience</div>
-    </div>
-
     <Header />
     <main><slot /></main>
     <Footer />
