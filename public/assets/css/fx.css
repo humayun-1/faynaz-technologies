@@ -297,6 +297,10 @@ body.fx-loading { overflow: hidden; }
 .fx-foot-col a:hover { color: var(--accent); }
 .fx-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
 .fx-badge { font-size: .72rem; font-weight: 600; padding: 6px 10px; border: 1px solid var(--line-strong); border-radius: 8px; color: var(--ink-soft); }
+.fx-logostrip { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.fx-logo-tile { display: inline-flex; align-items: center; gap: 7px; padding: 8px 11px; border: 1px solid var(--line-strong); border-radius: 9px; background: var(--card); color: var(--muted); font-size: .8rem; font-weight: 650; letter-spacing: -.01em; filter: grayscale(1) opacity(.85); transition: color .18s ease, border-color .18s ease, filter .18s ease, transform .18s ease; }
+.fx-logo-tile svg { width: 15px; height: 15px; flex: none; }
+a.fx-logo-tile:hover { color: var(--accent); border-color: var(--accent); filter: none; transform: translateY(-1px); }
 .fx-foot-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 50px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; flex-wrap: wrap; gap: 12px; }
 .fx-foot-social { display: flex; gap: 10px; }
 .fx-foot-social a { width: 34px; height: 34px; border: 1px solid var(--line-strong); border-radius: 8px; display: grid; place-items: center; color: var(--ink-soft); }
