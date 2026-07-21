@@ -29,7 +29,7 @@ const {
 const canonicalUrl = new URL(canonical ?? Astro.url.pathname, site.url).href;
 const ogImageUrl = new URL(ogImage, site.url).href;
 
-// Global entity graph — this is what Google + AI answer engines read to understand "who is Faynaz".
+// Global entity graph, this is what Google + AI answer engines read to understand "who is Faynaz".
 // Typed as Organization + ProfessionalService so it carries both corporate and local-business signals.
 const organization = {
   "@type": ["Organization", "ProfessionalService"],
@@ -45,7 +45,7 @@ const organization = {
   },
   image: { "@id": `${site.url}/#logo` },
   email: site.email,
-  telephone: site.phoneUae,
+  telephone: site.phone,
   description: site.description,
   foundingDate: String(site.foundingYear),
   priceRange: site.priceRange,
@@ -119,7 +119,7 @@ const graph = {
 <meta name="twitter:image" content={ogImageUrl} />
 
 <!-- Discovery + performance -->
-<link rel="alternate" type="application/rss+xml" title={`${site.name} — Insights`} href="/rss.xml" />
+<link rel="alternate" type="application/rss+xml" title={`${site.name}, Insights`} href="/rss.xml" />
 <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 <link rel="preload" as="style" href="/assets/css/fx.css" />
 

@@ -5,14 +5,14 @@ export const site = {
   url: "https://faynaztech.com",
   // Search-intent-tuned defaults (targets: hire developers, DevOps, AI automation, full-stack)
   title:
-    "Faynaz Technologies — Hire DevOps, AI Automation & Full-Stack Engineers",
+    "Faynaz Technologies, Hire DevOps, AI Automation & Full-Stack Engineers",
   description:
     "Dubai-based software studio. Hire senior DevOps, AI automation, and full-stack engineers as a dedicated team or a managed service. Book a discovery call.",
-  tagline: "Software, DevOps & AI automation — shipped and run for you.",
+  tagline: "Software, DevOps & AI automation, shipped and run for you.",
   ogImage: "/assets/img/favicon.png",
   logo: "/assets/img/favicon.png",
   email: "contact@faynaztech.com",
-  phoneUae: "+971 568718307",
+  phone: "+92 3222333170",
   phonePakistan: "+92 3222333170",
   // Booking + form endpoints
   booking: "https://calendly.com/contact-faynaztech",

@@ -301,6 +301,11 @@ body.fx-loading { overflow: hidden; }
 .fx-logo-tile { display: inline-flex; align-items: center; gap: 7px; padding: 8px 11px; border: 1px solid var(--line-strong); border-radius: 9px; background: var(--card); color: var(--muted); font-size: .8rem; font-weight: 650; letter-spacing: -.01em; filter: grayscale(1) opacity(.85); transition: color .18s ease, border-color .18s ease, filter .18s ease, transform .18s ease; }
 .fx-logo-tile svg { width: 15px; height: 15px; flex: none; }
 a.fx-logo-tile:hover { color: var(--accent); border-color: var(--accent); filter: none; transform: translateY(-1px); }
+
+/* refined accent markers on prose lists (visual upgrade over plain bullets) */
+.fx-prose ul { list-style: none; padding-inline-start: 2px; }
+.fx-prose ul li { position: relative; padding-inline-start: 24px; }
+.fx-prose ul li::before { content: ""; position: absolute; inset-inline-start: 3px; top: .58em; width: 7px; height: 7px; border-radius: 2px; background: var(--accent); }
 .fx-foot-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 50px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; flex-wrap: wrap; gap: 12px; }
 .fx-foot-social { display: flex; gap: 10px; }
 .fx-foot-social a { width: 34px; height: 34px; border: 1px solid var(--line-strong); border-radius: 8px; display: grid; place-items: center; color: var(--ink-soft); }
