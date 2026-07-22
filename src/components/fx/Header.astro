@@ -1,10 +1,11 @@
 ---
 import { site } from "../../data/site";
+import Logo from "./Logo.astro";
 ---
 <header class="fx-header" id="fx-header">
   <div class="fx-wrap fx-nav">
     <a class="fx-brand" href="/" aria-label={`${site.name} home`}>
-      <img class="fx-logo" src={site.logo} width="34" height="34" alt={`${site.name} logo`} />
+      <Logo />
       <span class="wm">Faynaz<small>Technologies</small></span>
     </a>
     <nav class="fx-nav-links" aria-label="Primary">

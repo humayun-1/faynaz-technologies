@@ -64,7 +64,11 @@ button { font-family: inherit; }
 .fx-head p { margin-top: 18px; color: var(--ink-soft); font-size: 1.08rem; }
 
 /* logo (real image) */
-.fx-logo { height: 34px; width: auto; }
+.fx-logo { height: 30px; width: auto; display: block; }
+.fx-logo .lg-f { fill: var(--accent); }
+.fx-logo .lg-y { fill: var(--ink); }
+/* white second-mark on dark surfaces */
+.fx-cta .fx-logo .lg-y, .fx-model.alt .fx-logo .lg-y, [data-on-dark] .fx-logo .lg-y { fill: #fff; }
 .fx-brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 650; letter-spacing: -.02em; color: var(--ink); }
 .fx-brand .wm { line-height: 1.02; }
 .fx-brand small { display: block; font-size: .68rem; font-weight: 500; letter-spacing: .02em; color: var(--muted); margin-top: -2px; }

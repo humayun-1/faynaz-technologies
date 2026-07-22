@@ -1,5 +1,6 @@
 ---
 import { site } from "../../data/site";
+import Logo from "./Logo.astro";
 const year = new Date().getFullYear();
 ---
 <footer class="fx-footer">
@@ -7,7 +8,7 @@ const year = new Date().getFullYear();
     <div class="fx-foot-top">
       <div class="fx-foot-brand">
         <a class="fx-brand" href="/">
-          <img class="fx-logo" src={site.logo} width="34" height="34" alt={`${site.name} logo`} />
+          <Logo />
           <span class="wm">Faynaz<small>Technologies</small></span>
         </a>
         <p data-i18n="foot_about">A Dubai-based software studio building full-stack development, DevOps, and AI automation for teams that need it done right.</p>
