@@ -177,6 +177,7 @@
 
   /* ---------- estimator stepper (one question at a time) ---------- */
   (function () {
+    try {
     var wrap = document.getElementById("fx-est-steps");
     if (!wrap) return;
     var steps = Array.prototype.slice.call(wrap.querySelectorAll(".fx-est-step"));
@@ -196,7 +197,7 @@
       if (cur) cur.textContent = idx + 1;
       if (back) back.disabled = idx === 0;
       var lbl = next && next.querySelector(".lbl");
-      if (lbl) lbl.textContent = idx === total - 1 ? (curLang === "ar" ? "شاهد التقدير" : "See estimate") : (curLang === "ar" ? "التالي" : "Next");
+      if (lbl) lbl.textContent = idx === total - 1 ? (cur === "ar" ? "شاهد التقدير" : "See estimate") : (cur === "ar" ? "التالي" : "Next");
     }
     function go(n) {
       idx = Math.max(0, Math.min(total - 1, n));
@@ -219,6 +220,7 @@
       }
     });
     render();
+    } catch (e) { /* estimator UI must never block the rest of the page */ }
   })();
 
   /* ---------- scroll reveal ---------- */
