@@ -50,6 +50,29 @@ const faqSchema = {
 ---
 
 <SiteClean title={title} description={description} keywords={keywords} schema={[faqSchema]}>
+  <!-- PRELOADER (homepage only, once per session; CSS auto-dismisses so it can never trap the page) -->
+  <script is:inline>
+    (function () {
+      var h = document.documentElement;
+      try {
+        if (sessionStorage.getItem("fx-seen")) { h.classList.add("fx-skip-pre"); return; }
+        sessionStorage.setItem("fx-seen", "1");
+      } catch (e) {}
+    })();
+  </script>
+  <div id="fx-pre" aria-hidden="true">
+    <div class="fx-pre-mark">
+      <svg class="ghost" viewBox="124 74 282 322" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 362 196 L 400 196 L 400 360 A 30 30 0 0 1 370 390 L 147 390 L 147 352 L 362 352 L 362 310 L 165 310 L 165 272 L 362 272 Z"/>
+        <path d="M 130 110 A 30 30 0 0 1 160 80 L 380 80 L 380 118 L 168 118 L 168 158 L 362 158 L 362 196 L 168 196 L 168 270 L 130 270 Z"/>
+      </svg>
+      <svg class="fill" viewBox="124 74 282 322" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 362 196 L 400 196 L 400 360 A 30 30 0 0 1 370 390 L 147 390 L 147 352 L 362 352 L 362 310 L 165 310 L 165 272 L 362 272 Z"/>
+        <path d="M 130 110 A 30 30 0 0 1 160 80 L 380 80 L 380 118 L 168 118 L 168 158 L 362 158 L 362 196 L 168 196 L 168 270 L 130 270 Z"/>
+      </svg>
+    </div>
+  </div>
+
   <!-- HERO -->
   <section class="fx-hero fx-section--plain">
     <div class="fx-wrap">
