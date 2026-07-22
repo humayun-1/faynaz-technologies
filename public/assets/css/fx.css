@@ -551,3 +551,81 @@ h3 { letter-spacing: -0.018em; }
 @keyframes fx-drift { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(3%, -4%, 0); } }
 .fx-hero-visual::before { animation: fx-drift 10s ease-in-out infinite; }
 .fx-hero-visual::after { animation: fx-drift 13s ease-in-out infinite reverse; }
+
+/* ============================================================
+   Premium polish layer — cohesive, GPU-only, motion-safe.
+   Everything here is decorative and auto-disabled under
+   prefers-reduced-motion via the global rule above.
+   ============================================================ */
+
+/* 1 — Scroll progress bar (native CSS scroll-timeline; no JS).
+   Falls back to invisible on unsupported browsers, so it can never
+   render as a broken full-width bar. */
+.fx-scrollbar {
+  position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 100;
+  transform: scaleX(0); transform-origin: 0 50%; pointer-events: none;
+  background: linear-gradient(90deg, var(--accent), var(--accent-ink));
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+@supports (animation-timeline: scroll()) {
+  .fx-scrollbar { animation: fx-scrollgrow linear both; animation-timeline: scroll(root block); }
+}
+@keyframes fx-scrollgrow { to { transform: scaleX(1); } }
+
+/* 2 — Animated gradient shimmer on the hero highlight word.
+   Static (still coloured) under reduced motion or without clip support. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .fx-hero h1 .hl {
+    background: linear-gradient(100deg, var(--accent) 18%, #ff9163 50%, var(--accent) 82%);
+    background-size: 220% auto;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    animation: fx-shimmer 7s linear infinite;
+  }
+}
+@keyframes fx-shimmer { to { background-position: 220% center; } }
+
+/* 3 — Subtle dot-grid texture behind the hero (depth, not noise). */
+.fx-hero { position: relative; }
+.fx-hero::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(circle at center, var(--line-strong) 1px, transparent 1.5px);
+  background-size: 28px 28px; opacity: .45;
+  -webkit-mask-image: radial-gradient(ellipse 62% 55% at 42% 32%, #000, transparent 78%);
+  mask-image: radial-gradient(ellipse 62% 55% at 42% 32%, #000, transparent 78%);
+}
+.fx-hero > .fx-wrap { position: relative; z-index: 1; }
+
+/* 4 — Card hover: icon lifts, "Learn more" arrow slides. */
+.fx-card .ico { transition: transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s ease; }
+.fx-card:hover .ico {
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 6px 16px -6px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+.fx-card .more span[aria-hidden] { transition: transform .22s cubic-bezier(.2,.7,.2,1); }
+.fx-card:hover .more span[aria-hidden] { transform: translateX(4px); }
+
+/* 5 — Sheen sweep across primary buttons on hover. */
+.fx-btn--primary, .fx-btn--light { position: relative; overflow: hidden; }
+.fx-btn--primary::before, .fx-btn--light::before {
+  content: ""; position: absolute; top: 0; left: -130%; width: 55%; height: 100%;
+  transform: skewX(-18deg); pointer-events: none;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.38), transparent);
+}
+.fx-btn--primary:hover::before, .fx-btn--light:hover::before { animation: fx-sheen .85s ease; }
+@keyframes fx-sheen { to { left: 170%; } }
+
+/* 6 — Marquee: soft edge fade + pause on hover. */
+.fx-marquee {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.fx-marquee:hover .fx-marquee-track { animation-play-state: paused; }
+
+/* 7 — Process steps become interactive. */
+.fx-pstep { transition: transform .24s cubic-bezier(.2,.7,.2,1), border-top-color .24s ease; }
+.fx-pstep:hover { transform: translateY(-4px); border-top-color: var(--accent); }
+
+/* 8 — Trust logos ink in on hover. */
+.fx-logos span { transition: color .2s ease, transform .2s ease; }
+.fx-logos span:hover { color: var(--ink); transform: translateY(-1px); }
