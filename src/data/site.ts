@@ -4,7 +4,7 @@ export const site = {
   // Cache-buster for long-lived static assets (css/js/favicon). Bump on any
   // change to those files so returning visitors fetch fresh past the 1-year
   // immutable Cache-Control set in vercel.json.
-  assetVer: "20260724-blue",
+  assetVer: "20260724-amoda",
   // Canonical production domain (used for SEO canonical URLs, sitemap, JSON-LD)
   url: "https://faynaztech.com",
   // Search-intent-tuned defaults (targets: hire developers, DevOps, AI automation, full-stack)

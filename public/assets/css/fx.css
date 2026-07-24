@@ -23,7 +23,7 @@
   --shadow-sm: 0 1px 1px rgba(15, 23, 42, .04), 0 2px 5px rgba(15, 23, 42, .05);
   --shadow-md: 0 1px 2px rgba(15, 23, 42, .04), 0 6px 12px -4px rgba(15, 23, 42, .07), 0 16px 30px -12px rgba(15, 23, 42, .12);
   --shadow-lg: 0 2px 4px rgba(15, 23, 42, .05), 0 12px 24px -8px rgba(15, 23, 42, .10), 0 36px 60px -24px rgba(15, 23, 42, .22);
-  --radius: 14px;
+  --radius: 18px;
   --radius-sm: 10px;
   --container: 1160px;
   --sans: "Inter", "Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -52,11 +52,11 @@ button { font-family: inherit; }
 .fx-eyebrow { font-size: .72rem; font-weight: 650; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin: 0 0 18px; }
 [dir="rtl"] .fx-eyebrow { letter-spacing: .05em; }
 .fx-lead { font-size: 1.18rem; line-height: 1.6; color: var(--ink-soft); }
-.fx-section { padding: clamp(66px,9vw,116px) 0; border-top: 1px solid var(--line); }
+.fx-section { padding: clamp(80px,10vw,144px) 0; border-top: 1px solid var(--line); }
 .fx-section--surface { background: var(--surface); }
 .fx-section--plain { border-top: none; }
-.fx-head { max-width: 660px; margin-bottom: 52px; }
-.fx-head h2 { font-size: clamp(1.85rem,3.4vw,2.7rem); font-weight: 640; line-height: 1.08; }
+.fx-head { max-width: 720px; margin-bottom: 64px; }
+.fx-head h2 { font-size: clamp(2rem,3.8vw,3rem); font-weight: 640; line-height: 1.06; }
 .fx-head p { margin-top: 18px; color: var(--ink-soft); font-size: 1.08rem; }
 
 /* logo (real image) */
@@ -171,8 +171,8 @@ body.fx-loading { overflow: hidden; }
 .fx-logos span { font-weight: 680; font-size: 1.1rem; letter-spacing: -.02em; color: var(--ink-soft); }
 
 /* cards */
-.fx-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
-.fx-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm);
+.fx-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.fx-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow-sm);
   transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; display: block; }
 .fx-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--line-strong); }
 .fx-card .ico { width: 44px; height: 44px; border-radius: 11px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; margin-bottom: 20px; }
@@ -257,10 +257,13 @@ body.fx-loading { overflow: hidden; }
 .fx-work .foot { margin-top: auto; padding-top: 8px; font-size: .84rem; color: var(--muted); border-top: 1px solid var(--line); }
 
 /* testimonials */
-.fx-quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.fx-quote { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow-sm);
-  display: flex; flex-direction: column; gap: 22px; }
-.fx-quote blockquote { margin: 0; font-size: 1.18rem; line-height: 1.5; font-weight: 500; letter-spacing: -.015em; }
+.fx-quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.fx-quotes.cols-3 { grid-template-columns: repeat(3,1fr); }
+.fx-quote { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 34px; box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column; gap: 22px; position: relative; }
+.fx-quote .mark { font-size: 3rem; line-height: .6; font-weight: 800; color: color-mix(in srgb, var(--accent) 26%, transparent); font-family: Georgia, "Times New Roman", serif; }
+.fx-quote blockquote { margin: 0; font-size: 1.12rem; line-height: 1.55; font-weight: 500; letter-spacing: -.015em; flex: 1; }
+.fx-quote .stars { color: var(--accent); letter-spacing: 2px; font-size: .9rem; }
 .fx-quote .who { display: flex; align-items: center; gap: 13px; }
 .fx-quote .av { width: 42px; height: 42px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; font-weight: 680; flex: none; }
 .fx-quote .nm { font-weight: 600; font-size: .94rem; } .fx-quote .rl { font-size: .84rem; color: var(--muted); }
@@ -346,7 +349,7 @@ a.fx-logo-tile:hover { color: var(--accent); border-color: var(--accent); filter
 @media (max-width: 940px) {
   .fx-hero-grid { grid-template-columns: 1fr; } .fx-hero-visual { max-width: 480px; }
   .fx-cards { grid-template-columns: 1fr; }
-  .fx-models, .fx-quotes { grid-template-columns: 1fr; }
+  .fx-models, .fx-quotes, .fx-quotes.cols-3 { grid-template-columns: 1fr; }
   .fx-est-grid, .fx-why-grid, .fx-faq-grid { grid-template-columns: 1fr; }
   .fx-readout { position: static; }
   .fx-process { grid-template-columns: repeat(2,1fr); gap: 26px 18px; }
