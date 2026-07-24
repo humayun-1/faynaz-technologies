@@ -121,7 +121,7 @@ const graph = {
 <!-- Discovery + performance -->
 <link rel="alternate" type="application/rss+xml" title={`${site.name}, Insights`} href="/rss.xml" />
 <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
-<link rel="preload" as="style" href="/assets/css/fx.css" />
+<link rel="preload" as="style" href={`/assets/css/fx.css?v=${site.assetVer}`} />
 
 <!-- Structured data (SEO rich results + GEO entity signal) -->
 <script type="application/ld+json" set:html={JSON.stringify(graph)} is:inline />
